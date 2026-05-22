@@ -21,15 +21,15 @@
 <!-- Open Graph -->
 <meta property="og:title" content="Gusty Group — Fractional Ops & Finance for Healthcare">
 <meta property="og:description" content="Gusty Group is a fractional ops and finance firm for Healthcare & Life Sciences companies, early stage through growth. Financial models, operating systems, and fundraising support.">
-<meta property="og:image" content="https://gustygroup.com/favicon-192.png">
-<meta property="og:url" content="https://gustygroup.com">
+<meta property="og:image" content="https://gustygroup.co/favicon-192.png">
+<meta property="og:url" content="https://gustygroup.co">
 <meta property="og:type" content="website">
 
 <!-- Twitter / iMessage -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gusty Group — Fractional Ops & Finance for Healthcare & Life Sciences">
 <meta name="twitter:description" content="Gusty Group is a fractional ops and finance firm for Healthcare & Life Sciences companies, early stage through growth. Financial models, operating systems, and fundraising support.">
-<meta name="twitter:image" content="https://gustygroup.com/favicon-192.png">
+<meta name="twitter:image" content="https://gustygroup.co/favicon-192.png">
 
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="icon" sizes="192x192" href="/favicon-192.png">
@@ -37,87 +37,87 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #EFE7D6;
-    --cream-deep: #E5DBC5;
-    --ink: #0A0908;
-    --ink-soft: #1A1814;
-    --muted: #4A4339;
-    --line: #C9BFA8;
-    --forest: #1F2D1F;
-    --forest-deep: #15201A;
-    --sienna: #8B4513;
-    --paper: #F7F1E3;
+    --olive:      #3D4D2A;
+    --olive-deep: #2A361B;
+    --ink:        #1A1A17;
+    --ink-dim:    #5A5A52;
+    --rule:       #C7C2B3;
+    --paper:      #FFFFFF;
+    --stone:      #E8E6DC;
+    --oxblood:    #6B1F1F;
+
+    --display: 'EB Garamond', 'Garamond', 'Hoefler Text', Georgia, serif;
+    --body:    'General Sans', system-ui, -apple-system, sans-serif;
+    --mono:    'General Sans', system-ui, -apple-system, sans-serif;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; padding: 0; }
 
-  html {
-    scroll-behavior: smooth;
-    color-scheme: light;
-    background: var(--cream);
-  }
-
+  html { scroll-behavior: smooth; background: var(--paper); color-scheme: light; }
   body {
-    font-family: 'Geist', -apple-system, sans-serif;
-    background: var(--cream) !important;
-    color: var(--ink) !important;
-    color-scheme: light;
-    font-size: 17px;
-    line-height: 1.55;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
     font-weight: 400;
+    font-size: 16px;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
 
-  .mono {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
+  img, svg { display: block; max-width: 100%; }
 
-  .serif { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
+  a { color: var(--oxblood); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; transition: background 0.15s, color 0.15s; }
+  a:hover { background: var(--oxblood); color: var(--paper); text-decoration: none; }
 
-  .container { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
 
+  /* ============================ NAV ============================ */
   nav.top {
     position: sticky; top: 0; z-index: 50;
-    background: rgba(239, 231, 214, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s ease;
+    background: var(--olive);
+    border-bottom: 1px solid var(--olive-deep);
+    padding: 14px 0;
   }
-  nav.top.scrolled { border-bottom-color: var(--line); }
+  nav.top.scrolled { border-bottom-color: var(--olive-deep); }
   nav.top .inner {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 32px; max-width: 1240px; margin: 0 auto;
+    max-width: 1080px; margin: 0 auto; padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
   }
   nav.top .logo {
-    font-family: 'Fraunces', serif; font-weight: 500;
-    font-size: 1.15rem; letter-spacing: -0.01em;
+    display: inline-flex; align-items: center;
+    text-decoration: none;
+    background: transparent;
   }
-  nav.top .logo .dot {
-    display: inline-block; width: 7px; height: 7px;
-    background: var(--sienna); border-radius: 50%;
-    margin-right: 8px; transform: translateY(-2px);
-  }
-  nav.top ul { list-style: none; display: flex; gap: 36px; align-items: center; }
+  nav.top .logo:hover { background: transparent; }
+  nav.top .logo svg { display: block; height: 42px; width: auto; }
+  nav.top ul { list-style: none; display: flex; gap: 28px; align-items: center; }
   nav.top ul a {
-    color: var(--ink-soft); text-decoration: none;
-    font-size: 0.9rem; font-weight: 400; transition: color 0.2s;
+    color: var(--paper); text-decoration: none;
+    font-family: var(--body);
+    font-size: 14px; font-weight: 400;
+    transition: background 0.15s, color 0.15s;
+    padding: 4px 6px;
   }
-  nav.top ul a:hover { color: var(--sienna); }
+  nav.top ul a:hover { background: var(--oxblood); color: var(--paper); }
   nav.top .book-cta {
-    background: var(--ink); color: var(--paper);
-    padding: 10px 18px; border-radius: 999px;
-    font-size: 0.85rem; font-weight: 500;
+    display: inline-block;
+    font-family: var(--body); font-weight: 500;
+    font-size: 13px;
+    padding: 8px 16px;
+    border: 1px solid var(--paper);
+    color: var(--paper);
+    background: transparent;
+    text-decoration: none;
   }
-  nav.top .book-cta:hover { background: var(--forest-deep); color: var(--paper); }
+  nav.top .book-cta:hover { background: var(--paper); color: var(--olive); }
 
   /* Mobile nav */
   .nav-toggle {
@@ -125,7 +125,7 @@
     width: 28px; height: 20px; position: relative; z-index: 60;
   }
   .nav-toggle span {
-    display: block; width: 100%; height: 2px; background: var(--ink);
+    display: block; width: 100%; height: 1.5px; background: var(--paper);
     position: absolute; left: 0; transition: all 0.3s ease;
   }
   .nav-toggle span:nth-child(1) { top: 0; }
@@ -137,14 +137,15 @@
 
   .nav-mobile {
     display: none; flex-direction: column; gap: 16px;
-    padding: 20px 32px 24px; background: rgba(239, 231, 214, 0.95);
-    backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
+    padding: 20px 32px 24px; background: var(--olive);
+    border-bottom: 1px solid var(--olive-deep);
   }
   .nav-mobile a {
-    color: var(--ink-soft); text-decoration: none;
-    font-size: 1rem; font-weight: 400;
+    color: var(--paper); text-decoration: none;
+    font-family: var(--body);
+    font-size: 15px; font-weight: 400;
   }
-  .nav-mobile a:hover { color: var(--sienna); }
+  .nav-mobile a:hover { background: var(--oxblood); color: var(--paper); }
   .nav-mobile.open { display: flex; }
 
   @media (max-width: 820px) {
@@ -152,378 +153,492 @@
     .nav-toggle { display: block; }
   }
 
-  .hero { padding: 90px 0 80px; position: relative; overflow: hidden; }
-  .hero .eyebrow {
-    color: var(--sienna); margin-bottom: 28px;
-    display: inline-flex; align-items: center; gap: 10px;
+  /* ============================ HERO ============================ */
+  .hero {
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 128px 0 120px;
   }
-  .hero .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--sienna); }
+  .hero .container { max-width: 1280px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 96px;
+    align-items: center;
+  }
+  .hero-text { min-width: 0; }
+  .hero-graphic {
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    padding: 24px 0;
+  }
+  .hero-graphic svg {
+    width: 100%; height: auto; display: block;
+  }
+  .hero-graphic .bar {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transform-box: fill-box;
+    animation: bar-rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  .hero-graphic .bar-1 { animation-delay: 0.25s; }
+  .hero-graphic .bar-2 { animation-delay: 0.55s; }
+  .hero-graphic .bar-3 { animation-delay: 0.85s; }
+  @keyframes bar-rise { to { transform: scaleY(1); } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-graphic .bar { animation: none; transform: scaleY(1); }
+  }
+  @media (max-width: 900px) {
+    .hero { padding: 80px 0 72px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+    .hero-graphic { max-width: 320px; margin: 0; padding: 0; }
+  }
   .hero h1 {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: clamp(2.4rem, 6.2vw, 5.4rem);
-    line-height: 1.02; letter-spacing: -0.025em;
-    color: var(--ink); max-width: 18ch;
-    font-variation-settings: "opsz" 144;
+    color: var(--ink);
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(40px, 5.2vw, 64px);
+    line-height: 1.06; letter-spacing: -0.015em;
+    max-width: 28ch;
   }
-  .hero h1 em { font-style: italic; color: var(--forest); font-weight: 400; }
+  .hero h1 .accent { color: var(--olive); }
   .hero .sub {
-    margin-top: 36px; max-width: 58ch;
-    font-size: 1.15rem; line-height: 1.55; color: var(--ink-soft);
+    margin-top: 22px;
+    color: var(--ink-soft);
+    font-family: var(--display);
+    font-size: clamp(17px, 1.9vw, 21px);
+    line-height: 1.5; max-width: 52ch;
   }
   .hero .cta-row {
-    margin-top: 44px; display: flex; gap: 18px;
+    margin-top: 32px; display: flex; gap: 16px;
     align-items: center; flex-wrap: wrap;
   }
-  .btn-primary {
-    background: var(--ink); color: var(--paper);
-    padding: 16px 28px; border-radius: 999px;
-    text-decoration: none; font-weight: 500; font-size: 0.95rem;
-    transition: all 0.25s ease;
-    display: inline-flex; align-items: center; gap: 10px;
+  .hero .btn-primary {
+    background: var(--olive); color: var(--paper); border-color: var(--olive);
   }
-  .btn-primary:hover { background: var(--forest-deep); transform: translateY(-1px); }
-  .btn-primary .arrow { transition: transform 0.25s ease; }
-  .btn-primary:hover .arrow { transform: translate(3px, -3px); }
+  .hero .btn-primary:hover {
+    background: var(--olive-deep); color: var(--paper); border-color: var(--olive-deep);
+  }
+  .hero .btn-ghost {
+    background: transparent; color: var(--ink); border-color: var(--ink);
+  }
+  .hero .btn-ghost:hover {
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
+  }
+  @media (max-width: 700px) {
+    .hero-inner { padding: 100px 24px 84px; }
+  }
+
+  /* ============================ BUTTONS ============================ */
+  .btn-primary,
   .btn-ghost {
-    color: var(--ink-soft); text-decoration: none; font-size: 0.95rem;
-    border-bottom: 1px solid var(--line); padding-bottom: 3px;
-    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+    font-family: var(--body); font-weight: 500;
+    font-size: 15px;
+    padding: 12px 22px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    border: 1px solid var(--ink);
   }
-  .btn-ghost:hover { border-color: var(--sienna); color: var(--sienna); }
+  .btn-primary {
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
+  }
+  .btn-primary:hover {
+    background: var(--paper); color: var(--ink); border-color: var(--ink);
+  }
+  .btn-primary .arrow { display: inline-block; margin-left: 4px; }
+  .btn-ghost {
+    background: transparent; color: var(--olive);
+    border-color: var(--olive);
+  }
+  .btn-ghost:hover { background: var(--olive); color: var(--paper); border-color: var(--olive); }
 
-  .proof-strip { margin-top: 84px; padding-top: 32px; border-top: 1px solid var(--line); }
-  .proof-strip .label { color: var(--muted); margin-bottom: 22px; }
-  .proof-columns {
-    display: flex; gap: 64px; flex-wrap: wrap;
-  }
-  .proof-col { flex: 1; min-width: 200px; }
-  .proof-strip .logos {
-    display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: center;
-  }
-  .proof-strip .logo-item {
-    font-family: 'Fraunces', serif;
-    font-size: 1.05rem; color: var(--ink-soft);
-    font-weight: 500; letter-spacing: -0.01em;
-  }
-  .proof-strip .logo-item small {
-    display: block; font-family: 'Geist', sans-serif;
-    font-size: 0.75rem; color: var(--muted);
-    font-weight: 400; margin-top: 2px; letter-spacing: 0;
-  }
 
-  .hero-mark {
-    position: absolute; top: 120px; right: -80px;
-    width: 420px; height: 420px; border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(139, 69, 19, 0.10), transparent 60%);
-    pointer-events: none; z-index: 0;
-  }
-  .hero .container { position: relative; z-index: 1; }
-
-  section { padding: 110px 0; position: relative; }
-  .section-head {
-    display: grid; grid-template-columns: 200px 1fr;
-    gap: 60px; margin-bottom: 70px; align-items: start;
-  }
-  @media (max-width: 760px) {
-    .section-head { grid-template-columns: 1fr; gap: 20px; }
-  }
-  .section-head .label {
-    color: var(--muted); padding-top: 12px;
-    border-top: 1px solid var(--ink); max-width: 160px;
-  }
+  /* ============================ SECTIONS ============================ */
+  section { padding: 96px 0; position: relative; border-bottom: 1px solid var(--rule); }
+  .section-head { margin-bottom: 56px; }
   .section-head h2 {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: clamp(2rem, 4.2vw, 3.4rem);
-    line-height: 1.05; letter-spacing: -0.02em;
-    max-width: 20ch; font-variation-settings: "opsz" 144;
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.02; letter-spacing: -0.012em;
+    margin: 0 0 24px 0;
+    color: var(--ink); max-width: 22ch;
   }
-  .section-head h2 em { font-style: italic; color: var(--forest); font-weight: 400; }
   .section-head .intro {
-    margin-top: 22px; color: var(--ink-soft);
-    max-width: 58ch; font-size: 1.05rem;
+    font-family: var(--display);
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.45; max-width: 56ch;
+    color: var(--ink);
   }
 
-  .icp {
-    background: var(--paper);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+  /* ============================ SITUATIONS (light surface, 3-column cards) ============================ */
+  .icp { background: #EEF0F3; border-bottom: 0; }
+  .icp .section-head h2 { color: var(--ink); }
+  .icp .section-head .intro { color: var(--ink-soft); }
+
+  .situations {
+    list-style: none; margin: 0; padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
-  .icp-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 0; border-left: 1px solid var(--line);
-  }
-  .icp-tile {
-    padding: 48px 40px 44px;
-    border-right: 1px solid var(--line);
+  .situation {
     background: var(--paper);
-    transition: background 0.3s ease;
+    border: 1px solid rgba(26, 26, 23, 0.12);
+    border-radius: 4px;
+    padding: 32px 28px 28px;
     display: flex; flex-direction: column;
-    min-height: 440px; position: relative;
+    min-height: 380px;
+    transition: border-color 0.18s, transform 0.18s;
   }
-  .icp-tile:hover { background: var(--cream-deep); }
-  .icp-tile .num {
-    font-family: 'Fraunces', serif; font-style: italic;
-    font-size: 2.2rem; color: var(--sienna);
-    font-weight: 300; margin-bottom: 40px;
+  .situation:hover {
+    border-color: var(--olive);
+    transform: translateY(-2px);
   }
-  .icp-tile h3 {
-    font-family: 'Fraunces', serif; font-size: 1.45rem;
-    font-weight: 500; line-height: 1.25;
-    letter-spacing: -0.015em; margin-bottom: 22px; color: var(--ink);
+  .situation-num {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--olive);
+    margin-bottom: 18px;
   }
-  .icp-tile p {
-    color: var(--ink-soft); font-size: 0.98rem;
-    line-height: 1.6; flex-grow: 1;
+  .situation h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin: 0 0 16px;
   }
-  .icp-tile .more {
-    margin-top: 28px; font-size: 0.88rem;
-    color: var(--forest); font-weight: 500;
-    display: inline-flex; align-items: center; gap: 6px;
+  .situation p {
+    font-family: var(--body);
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+    flex-grow: 1;
+  }
+  .situation .more {
+    display: inline-block;
+    font-family: var(--body); font-size: 14px;
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(0, 0, 0, 0.4);
+    align-self: flex-start;
+  }
+  .situation .more::after { content: " \2192"; }
+  .situation .more:hover {
+    background: var(--oxblood); color: var(--paper);
     text-decoration: none;
   }
-  .icp-tile .more::after { content: "\2192"; transition: transform 0.2s ease; }
-  .icp-tile:hover .more::after { transform: translateX(4px); }
+
+  .situations.reveal-stagger > .situation.reveal.in:nth-child(1) { transition-delay: 0ms; }
+  .situations.reveal-stagger > .situation.reveal.in:nth-child(2) { transition-delay: 140ms; }
+  .situations.reveal-stagger > .situation.reveal.in:nth-child(3) { transition-delay: 280ms; }
+
   @media (max-width: 900px) {
-    .icp-grid { grid-template-columns: 1fr; border-left: none; }
-    .icp-tile { border-right: none; border-bottom: 1px solid var(--line); min-height: auto; }
+    .situations { grid-template-columns: 1fr; gap: 14px; }
+    .situation { min-height: auto; padding: 28px 24px 24px; }
   }
 
-  .keep-intro h2 { max-width: 24ch; }
+  /* ============================ WHAT YOU KEEP ============================ */
   .keep-grid {
     display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    border-top: 1px solid var(--ink);
   }
   .keep-item {
-    background: var(--cream); padding: 44px 40px;
-    position: relative; min-height: 260px;
+    padding: 32px 28px;
+    background: var(--paper);
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
   }
-  .keep-item .idx { position: absolute; top: 28px; right: 36px; color: var(--muted); }
+  .keep-item:nth-child(2n) { border-right: 0; }
   .keep-item h4 {
-    font-family: 'Fraunces', serif; font-size: 1.3rem;
-    font-weight: 500; line-height: 1.25;
-    letter-spacing: -0.015em; margin-bottom: 18px; max-width: 22ch;
+    font-family: var(--display); font-weight: 500;
+    font-size: 20px; line-height: 1.3;
+    margin-bottom: 12px; max-width: 24ch;
+    color: var(--ink);
   }
-  .keep-item p { color: var(--ink-soft); font-size: 0.98rem; max-width: 42ch; }
-  @media (max-width: 800px) { .keep-grid { grid-template-columns: 1fr; } }
+  .keep-item p {
+    font-family: var(--body); font-size: 14px;
+    line-height: 1.6; color: var(--ink);
+    max-width: 44ch;
+  }
+  @media (max-width: 800px) {
+    .keep-grid { grid-template-columns: 1fr; }
+    .keep-item { border-right: 0; }
+  }
 
-  .work { background: var(--forest-deep); color: var(--paper); }
-  .work .section-head .label { color: rgba(247, 241, 227, 0.65); border-top-color: var(--paper); }
+  /* ============================ TRACK RECORD (olive surface) ============================ */
+  .work {
+    background: var(--olive);
+    color: var(--paper);
+    border-bottom: 0;
+  }
   .work .section-head h2 { color: var(--paper); }
-  .work .section-head h2 em { color: #C9B88A; }
+  .work .section-head .intro { color: rgba(255, 255, 255, 0.88); }
 
   .case {
     display: grid; grid-template-columns: 1fr 1.4fr;
-    gap: 70px; padding: 54px 0 40px;
-    border-top: 1px solid rgba(247, 241, 227, 0.2);
+    gap: 48px;
+    padding: 32px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
   }
-  @media (max-width: 900px) { .case { grid-template-columns: 1fr; gap: 30px; } }
+  @media (max-width: 900px) { .case { grid-template-columns: 1fr; gap: 32px; } }
   .case .meta .tag {
-    color: #C9B88A; margin-bottom: 18px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-family: var(--body);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7); margin-bottom: 12px;
   }
   .case .meta h3 {
-    font-family: 'Fraunces', serif; font-size: 2.1rem;
-    font-weight: 400; line-height: 1.1;
-    letter-spacing: -0.02em; margin-bottom: 14px;
+    font-family: var(--display); font-weight: 500;
+    font-size: 32px; line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px; color: var(--paper);
   }
-  .case .meta .sub { color: rgba(247, 241, 227, 0.78); font-size: 0.95rem; max-width: 28ch; }
+  .case .meta .sub {
+    font-family: var(--display); font-size: 18px;
+    line-height: 1.4; color: rgba(255, 255, 255, 0.72);
+    max-width: 32ch;
+  }
   .case .body p {
-    color: rgba(247, 241, 227, 0.95); font-size: 1.05rem;
-    line-height: 1.65; margin-bottom: 22px; max-width: 58ch;
+    font-family: var(--body); font-size: 16px;
+    line-height: 1.65; color: rgba(255, 255, 255, 0.92);
+    margin-bottom: 18px; max-width: 60ch;
   }
-  .case .stats { display: flex; gap: 48px; margin-top: 28px; flex-wrap: wrap; }
+  .case .stats {
+    display: flex; gap: 48px;
+    margin-top: 24px; padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    flex-wrap: wrap;
+  }
   .case .stat .n {
-    font-family: 'Fraunces', serif; font-size: 2.6rem;
-    line-height: 1; color: #C9B88A; font-weight: 400; letter-spacing: -0.02em;
+    font-family: var(--display); font-weight: 500;
+    font-size: 36px; line-height: 1;
+    letter-spacing: -0.01em; color: var(--paper);
   }
-  .case .stat .l { color: rgba(247, 241, 227, 0.78); font-size: 0.85rem; margin-top: 8px; }
-  .case .proves {
-    margin-top: 34px; padding: 18px 22px;
-    border-left: 2px solid #C9B88A;
-    font-family: 'Fraunces', serif; font-style: italic;
-    font-size: 1.05rem; color: rgba(247, 241, 227, 0.96); max-width: 56ch;
-  }
-  .case-placeholder {
-    margin-top: 30px; padding: 44px 40px;
-    border: 1px dashed rgba(247, 241, 227, 0.32);
-    border-radius: 4px; color: rgba(247, 241, 227, 0.65);
-  }
-  .case-placeholder .tag { color: #C9B88A; margin-bottom: 14px; }
-  .case-placeholder h4 {
-    font-family: 'Fraunces', serif; font-size: 1.3rem;
-    font-weight: 500; color: rgba(247, 241, 227, 0.88); margin-bottom: 10px;
+  .case .stat .l {
+    font-family: var(--body); font-size: 14px;
+    color: rgba(255, 255, 255, 0.7); margin-top: 8px;
+    max-width: 22ch; line-height: 1.4;
   }
 
-  .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; }
+  /* ============================ FOUNDER ============================ */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 64px;
+  }
   @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
   .about-grid .left h2 {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.08; letter-spacing: -0.02em; max-width: 14ch;
-  }
-  .about-grid .left h2 em { font-style: italic; color: var(--forest); }
-  .about-grid .left .label {
-    margin-bottom: 30px; color: var(--muted);
-    padding-top: 12px; border-top: 1px solid var(--ink); display: inline-block;
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(40px, 5.5vw, 56px);
+    line-height: 1.05; letter-spacing: -0.01em;
+    color: var(--ink); max-width: 14ch;
   }
   .about-photo {
-    margin-top: 40px; width: 100%; max-width: 280px;
-    border-radius: 6px; filter: grayscale(0.15);
+    margin-top: 32px; width: 100%; max-width: 240px;
+    border: 1px solid var(--rule);
+    filter: grayscale(0.3);
   }
-  @media (max-width: 900px) {
-    .about-photo { max-width: 220px; }
-  }
+  @media (max-width: 900px) { .about-photo { max-width: 200px; } }
   .about-grid .right p {
-    font-size: 1.05rem; color: var(--ink-soft);
-    line-height: 1.65; margin-bottom: 20px; max-width: 60ch;
-  }
-  .about-grid .right p:first-child::first-letter {
-    font-family: 'Fraunces', serif; font-size: 3.4rem;
-    float: left; line-height: 0.9; margin: 6px 12px 0 0;
-    color: var(--forest); font-weight: 400;
+    font-family: var(--body); font-size: 16px;
+    line-height: 1.7; color: var(--ink);
+    margin-bottom: 18px; max-width: 60ch;
   }
   .credentials {
-    margin-top: 36px; padding-top: 24px;
-    border-top: 1px solid var(--line);
-    font-size: 0.88rem; color: var(--muted); line-height: 1.7;
+    margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--body);
+    font-size: 13px;
+    color: var(--ink-dim); line-height: 1.7;
+    max-width: 60ch;
   }
 
-  .faq { background: var(--paper); border-top: 1px solid var(--line); }
-  .faq-list { max-width: 880px; margin: 0 auto; }
-  .faq-item { border-bottom: 1px solid var(--line); }
+  /* ============================ FAQ ============================ */
+  .faq { background: var(--paper); }
+  .faq-list { max-width: 800px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--rule); }
+  .faq-item:first-child { border-top: 1px solid var(--ink); }
+  .faq-item:last-child { border-bottom: 1px solid var(--ink); }
   .faq-item summary {
-    padding: 28px 0; cursor: pointer; list-style: none;
-    display: flex; justify-content: space-between; align-items: center; gap: 30px;
-    font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 500;
-    letter-spacing: -0.015em; color: var(--ink); transition: color 0.2s;
+    padding: 24px 0; cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    font-family: var(--display); font-weight: 500;
+    font-size: 22px; line-height: 1.35;
+    color: var(--ink);
   }
   .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary:hover { color: var(--forest); }
+  .faq-item summary:hover .icon::before { color: var(--oxblood); }
   .faq-item summary .icon {
-    flex-shrink: 0; width: 28px; height: 28px;
-    border: 1px solid var(--line); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Geist', sans-serif; font-weight: 300;
-    font-size: 1.1rem; color: var(--ink-soft); transition: all 0.25s ease;
+    flex-shrink: 0;
+    font-family: var(--body);
+    width: 16px; text-align: center; font-size: 0;
   }
-  .faq-item[open] summary .icon {
-    transform: rotate(45deg); background: var(--ink);
-    color: var(--paper); border-color: var(--ink);
-  }
+  .faq-item summary .icon::before { content: '+'; font-size: 16px; color: var(--ink-dim); }
+  .faq-item[open] summary .icon::before { content: '\2212'; }
   .faq-item .answer {
-    padding: 0 0 32px; color: var(--ink-soft);
-    font-size: 1rem; line-height: 1.65; max-width: 64ch;
+    padding: 0 0 24px;
+    font-family: var(--body); font-size: 15px;
+    line-height: 1.7; color: var(--ink);
+    max-width: 64ch;
   }
 
+  /* ============================ FINAL / CONTACT ============================ */
   .final {
-    background: var(--cream-deep); padding: 140px 0;
-    text-align: center; position: relative; overflow: hidden;
+    background: var(--paper);
+    padding: 120px 0 96px;
+    text-align: left;
+    border-top: none;
   }
-  .final::before {
-    content: ""; position: absolute;
-    top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 900px; height: 900px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(31, 45, 31, 0.08), transparent 65%);
-    pointer-events: none;
+  .final .label {
+    font-family: var(--body);
+    font-size: 14px;
+    color: var(--ink-dim); margin-bottom: 18px;
   }
-  .final .container { position: relative; z-index: 1; }
-  .final .label { color: var(--muted); margin-bottom: 28px; }
   .final h2 {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: clamp(2.4rem, 5.5vw, 4.4rem);
-    line-height: 1.02; letter-spacing: -0.025em;
-    max-width: 16ch; margin: 0 auto 30px;
-    font-variation-settings: "opsz" 144;
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 0.96; letter-spacing: -0.02em;
+    color: var(--ink); max-width: 18ch;
+    margin: 0 0 28px;
   }
-  .final h2 em { font-style: italic; color: var(--forest); }
   .final p {
-    color: var(--ink-soft); font-size: 1.1rem;
-    max-width: 52ch; margin: 0 auto 44px; line-height: 1.6;
+    font-family: var(--display);
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.45; color: var(--ink);
+    max-width: 56ch; margin: 0 0 40px;
   }
   .final .cta-row {
-    justify-content: center; display: flex; gap: 20px;
-    align-items: center; flex-wrap: wrap;
+    display: flex; gap: 16px;
+    flex-wrap: wrap;
   }
 
   .contact-form-wrap {
-    margin-top: 44px; max-width: 560px;
-    margin-left: auto; margin-right: auto;
-    text-align: left;
+    margin-top: 56px; max-width: 480px;
   }
   .contact-form-wrap .form-label {
-    color: var(--muted); font-size: 0.95rem; margin-bottom: 20px;
-    text-align: center;
+    font-family: var(--body);
+    font-size: 14px;
+    color: var(--ink-dim); margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
   }
   .contact-form {
-    display: flex; flex-direction: column; gap: 14px;
+    display: flex; flex-direction: column; gap: 22px;
   }
   .contact-form .form-row {
-    display: flex; gap: 14px; flex-wrap: wrap;
+    display: flex; gap: 24px; flex-wrap: wrap;
   }
   .contact-form .form-row > * {
-    flex: 1; min-width: 160px;
+    flex: 1; min-width: 180px;
   }
   .contact-form input,
   .contact-form textarea {
-    font-family: 'Geist', -apple-system, sans-serif;
-    font-size: 0.95rem; padding: 14px 16px;
-    border: 1px solid var(--line); border-radius: 8px;
-    background: var(--paper); color: var(--ink);
-    transition: border-color 0.2s;
     width: 100%;
-  }
-  .contact-form input::placeholder,
-  .contact-form textarea::placeholder {
-    color: var(--muted); opacity: 0.7;
+    font-family: var(--body); font-size: 15px;
+    padding: 12px 0 8px;
+    border: 0; border-bottom: 1px solid var(--ink);
+    background: transparent; color: var(--ink);
+    outline: none;
+    border-radius: 0;
   }
   .contact-form input:focus,
   .contact-form textarea:focus {
-    outline: none; border-color: var(--forest);
+    border-bottom-color: var(--oxblood);
+    border-bottom-width: 2px;
+    padding-bottom: 7px;
   }
-  .contact-form textarea { resize: vertical; }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: var(--ink-dim); opacity: 0.8;
+  }
+  .contact-form textarea { resize: vertical; min-height: 60px; }
   .contact-form button[type="submit"] {
-    align-self: center; border: none; cursor: pointer;
-    font-family: 'Geist', -apple-system, sans-serif;
+    align-self: flex-start;
+    margin-top: 12px;
+    border: 1px solid var(--ink);
+    background: var(--ink); color: var(--paper);
+    font-family: var(--body); font-weight: 500;
+    font-size: 15px;
+    padding: 12px 22px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .contact-form button[type="submit"]:hover {
+    background: var(--paper); color: var(--ink);
   }
 
+  /* ============================ FOOTER ============================ */
   footer {
-    background: var(--ink); color: rgba(247, 241, 227, 0.68);
-    padding: 50px 0 40px; font-size: 0.88rem;
+    background: var(--paper);
+    border-top: 1px solid var(--ink);
+    padding: 48px 0 96px;
+    font-family: var(--body);
+    font-size: 14px;
+    color: var(--ink-dim);
   }
   footer .row {
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex; justify-content: space-between; align-items: baseline;
     flex-wrap: wrap; gap: 18px;
   }
   footer .brand {
-    font-family: 'Fraunces', serif; color: var(--paper);
-    font-size: 1.05rem; font-weight: 500;
+    font-family: var(--display);
+    font-size: 18px;
+    color: var(--ink);
   }
   footer a {
-    color: rgba(247, 241, 227, 0.82); text-decoration: none;
-    margin-left: 24px; transition: color 0.2s;
+    color: var(--ink-dim);
+    text-decoration: underline; text-underline-offset: 3px;
+    margin-left: 24px;
   }
-  footer a:hover { color: var(--paper); }
+  footer a:hover { background: var(--oxblood); color: var(--paper); }
   footer .fine {
     margin-top: 28px; padding-top: 22px;
-    border-top: 1px solid rgba(247, 241, 227, 0.14);
-    font-size: 0.8rem; color: rgba(247, 241, 227, 0.52);
+    border-top: 1px solid var(--rule);
+    font-size: 13px; line-height: 1.5;
+    color: var(--ink-dim);
   }
 
+  /* ============================ REVEAL ============================ */
   .reveal {
-    opacity: 0; transform: translateY(24px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
   .reveal.in { opacity: 1; transform: translateY(0); }
 
-  ::selection { background: var(--forest); color: var(--paper); }
+  .reveal-stagger > .reveal.in:nth-child(1) { transition-delay: 0ms; }
+  .reveal-stagger > .reveal.in:nth-child(2) { transition-delay: 140ms; }
+  .reveal-stagger > .reveal.in:nth-child(3) { transition-delay: 280ms; }
+  .reveal-stagger > .reveal.in:nth-child(4) { transition-delay: 420ms; }
+  .reveal-stagger > .reveal.in:nth-child(5) { transition-delay: 560ms; }
+  .reveal-stagger > .reveal.in:nth-child(6) { transition-delay: 700ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  ::selection { background: var(--oxblood); color: var(--paper); }
 </style>
 </head>
 <body>
 
 <nav class="top" id="topnav">
   <div class="inner">
-    <a href="#" class="logo" style="text-decoration:none; color:inherit;"><span class="dot"></span>Gusty Group</a>
+    <a href="#" class="logo" aria-label="Gusty Group">
+      <svg viewBox="0 0 1200 380" aria-hidden="true">
+        <text x="600" y="200" text-anchor="middle" fill="#FFFFFF"
+              font-family="EB Garamond, Georgia, serif" font-weight="400"
+              font-size="182" letter-spacing="40">GUSTY</text>
+        <text x="600" y="340" text-anchor="middle" fill="#FFFFFF"
+              font-family="EB Garamond, Georgia, serif" font-weight="400"
+              font-size="105" letter-spacing="23">GROUP</text>
+      </svg>
+    </a>
     <ul>
       <li><a href="#icp">Client Needs</a></li>
       <li><a href="#keep">What You Keep</a></li>
@@ -545,28 +660,33 @@
 </nav>
 
 <header class="hero">
-  <div class="hero-mark"></div>
   <div class="container">
-    <div class="eyebrow mono">Fractional Operations & Finance Firm</div>
-    <h1 class="reveal">
-      Fractional ops and finance for <em>healthcare & life sciences</em> founders, early stage through growth.
-    </h1>
-    <p class="sub reveal">
-      Gusty Group installs the financial and operating systems your next board meeting, next hire, and next raise will require. You get a senior operator embedded with your team, plus AI-powered systems that outlast the engagement.
-    </p>
-    <div class="cta-row reveal">
-      <a href="https://calendar.app.google/nnvAaL5ga6NigQVj9" target="_blank" rel="noopener" class="btn-primary">
-        Book a 30-minute call
-        <span class="arrow">&#8599;</span>
-      </a>
-      <a href="#icp" class="btn-ghost">See if we're a fit</a>
-    </div>
-
-    <div class="proof-strip reveal">
-      <div class="label mono">Team Pedigree</div>
-      <div class="logos">
-        <div class="logo-item">Mend Labs<small>COO &middot; 0 to 40 &middot; $25M+ raised</small></div>
-        <div class="logo-item">Deloitte<small>Management Consultant</small></div>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1 class="reveal">
+          Fractional ops and finance for <span class="accent">healthcare &amp; life sciences</span> founders, early stage through <span class="accent">growth</span>.
+        </h1>
+        <p class="sub reveal">
+          Gusty Group installs the financial and operating systems your next board meeting, next hire, and next raise will require. You get a senior operator embedded with your team, plus AI-powered systems that outlast the engagement.
+        </p>
+        <div class="cta-row reveal">
+          <a href="https://calendar.app.google/nnvAaL5ga6NigQVj9" target="_blank" rel="noopener" class="btn-primary">
+            Book a 30-minute call
+            <span class="arrow">&#8599;</span>
+          </a>
+          <a href="#icp" class="btn-ghost">See if we're a fit</a>
+        </div>
+      </div>
+      <div class="hero-graphic" aria-hidden="true">
+        <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
+          <!-- Baseline -->
+          <line x1="20" y1="200" x2="280" y2="200"
+                stroke="#1A1A17" stroke-width="1" opacity="0.25" />
+          <!-- Three olive bars, increasing in height -->
+          <rect class="bar bar-1" x="55"  y="140" width="50" height="60"  fill="#3D4D2A" />
+          <rect class="bar bar-2" x="125" y="90"  width="50" height="110" fill="#3D4D2A" />
+          <rect class="bar bar-3" x="195" y="30"  width="50" height="170" fill="#3D4D2A" />
+        </svg>
       </div>
     </div>
   </div>
@@ -575,66 +695,54 @@
 <section class="icp" id="icp">
   <div class="container">
     <div class="section-head">
-      <div class="label mono">01 / Where We Help</div>
-      <div>
-        <h2 class="reveal">Situations we're <em>built for</em>.</h2>
-        <p class="intro reveal">If one of these sounds like your challenge, we should talk.</p>
-      </div>
+      <h2 class="reveal">Situations we're built for.</h2>
+      <p class="intro reveal">If one of these sounds like your challenge, we should talk.</p>
     </div>
-  </div>
 
-  <div class="container" style="padding: 0;">
-    <div class="icp-grid">
-      <div class="icp-tile reveal">
-        <div class="num">01</div>
+    <ol class="situations reveal-stagger">
+      <li class="situation reveal">
+        <div class="situation-num">i.</div>
         <h3>&ldquo;We just closed our seed.&rdquo;</h3>
         <p>Your board now exists. Your runway spreadsheet is already wrong. You're spending half your week on vendor contracts and hiring logistics instead of the work only you can do. We come in for three to six months and build the financial model, board reporting cadence, and operating rhythm your investors now expect, so you can get back to product and science.</p>
         <a href="#book" class="more">See how this works</a>
-      </div>
-      <div class="icp-tile reveal">
-        <div class="num">02</div>
+      </li>
+      <li class="situation reveal">
+        <div class="situation-num">ii.</div>
         <h3>&ldquo;We're raising Series B in six to nine months.&rdquo;</h3>
         <p>Your model doesn't tie to your actuals. Your data room is a mess. And you need someone to help prepare for due diligence. We act as your fractional support through the raise: model builds, value creation plans, data room, investor narrative, diligence prep.</p>
         <a href="#book" class="more">See how this works</a>
-      </div>
-      <div class="icp-tile reveal">
-        <div class="num">03</div>
+      </li>
+      <li class="situation reveal">
+        <div class="situation-num">iii.</div>
         <h3>&ldquo;We want to scale without scaling headcount.&rdquo;</h3>
         <p>You're watching competitors do more with smaller teams and you know AI is part of the answer, but you don't know where to start or what's safe to automate in a regulated environment. We audit your workflows, build the systems you need to scale, and train your team to run them.</p>
         <a href="#book" class="more">See how this works</a>
-      </div>
-    </div>
+      </li>
+    </ol>
   </div>
 </section>
 
 <section id="keep">
   <div class="container">
     <div class="section-head keep-intro">
-      <div class="label mono">02 / What You Keep</div>
-      <div>
-        <h2 class="reveal">Most consultants leave behind a deck. Gusty Group leaves behind <em>systems</em>.</h2>
-        <p class="intro reveal">Every engagement produces working infrastructure your team owns and runs after we're gone. No dependency on us, no black boxes.</p>
-      </div>
+      <h2 class="reveal">Most consultants leave behind a deck. Gusty Group leaves behind systems.</h2>
+      <p class="intro reveal">Every engagement produces working infrastructure your team owns and runs after we're gone. No dependency on us, no black boxes.</p>
     </div>
 
-    <div class="keep-grid reveal">
-      <div class="keep-item">
-        <div class="idx mono">i</div>
+    <div class="keep-grid reveal-stagger">
+      <div class="keep-item reveal">
         <h4>A financial model that updates itself.</h4>
         <p>Wired to your accounting system, your CRM, and your payroll. Actuals flow in automatically. Your runway, burn, and scenario planning stay accurate without a week of month-end cleanup.</p>
       </div>
-      <div class="keep-item">
-        <div class="idx mono">ii</div>
+      <div class="keep-item reveal">
         <h4>An Operating Cadence designed around our team.</h4>
         <p>Strategic planning frameworks, OKR processes, and tracking systems embedded across the organization.</p>
       </div>
-      <div class="keep-item">
-        <div class="idx mono">iii</div>
+      <div class="keep-item reveal">
         <h4>An AI-audited ops stack.</h4>
         <p>A documented map of which workflows are automated, which are human, and why. Your team gets a system, not a mess.</p>
       </div>
-      <div class="keep-item">
-        <div class="idx mono">iv</div>
+      <div class="keep-item reveal">
         <h4>A Series B-ready data room.</h4>
         <p>For founders preparing to raise: the model, the metrics, the narrative, and the diligence answers, organized the way investors actually work through them.</p>
       </div>
@@ -645,10 +753,7 @@
 <section class="work" id="work">
   <div class="container">
     <div class="section-head">
-      <div class="label mono">03 / Track Record</div>
-      <div>
-        <h2 class="reveal">Where we've <em>done this before</em>.</h2>
-      </div>
+      <h2 class="reveal">Where we've done this before.</h2>
     </div>
 
     <div class="case reveal">
@@ -661,13 +766,12 @@
         <p>Joined Mend at the founding stage and built the company's full operating system: org structure, operating cadence, OKRs, financial model, and investor narrative. Led $25M+ in fundraising across seed and Series A, owning the model, diligence, and stakeholder management end to end.</p>
         <p>Grew the team to 40+ employees, signed 20+ B2B contracts serving 10,000+ end users, and stood up the internal data infrastructure and AI workflows that ran the business day to day.</p>
 
-        <div class="stats">
-          <div class="stat"><div class="n">$25M+</div><div class="l">Raised, seed through Series A</div></div>
-          <div class="stat"><div class="n">0 &rarr; 40</div><div class="l">Employees built and managed</div></div>
-          <div class="stat"><div class="n">20+</div><div class="l">B2B contracts signed</div></div>
+        <div class="stats reveal-stagger">
+          <div class="stat reveal"><div class="n">$25M+</div><div class="l">Raised, seed through Series A</div></div>
+          <div class="stat reveal"><div class="n">0 &rarr; 40</div><div class="l">Employees built and managed</div></div>
+          <div class="stat reveal"><div class="n">20+</div><div class="l">B2B contracts signed</div></div>
         </div>
 
-        <div class="proves">Gusty Group's principal has lived the exact journey your team is on &mdash; from the inside of healthcare.</div>
       </div>
     </div>
   </div>
@@ -677,8 +781,7 @@
   <div class="container">
     <div class="about-grid">
       <div class="left">
-        <div class="label mono">04 / Founder</div>
-        <h2 class="reveal">Ten years building from the <em>inside</em>.</h2>
+        <h2 class="reveal">Ten years building from the inside.</h2>
         <img src="hero-image.png" alt="Chris Gusty" class="about-photo reveal">
       </div>
       <div class="right">
@@ -699,35 +802,32 @@
 <section class="faq">
   <div class="container">
     <div class="section-head">
-      <div class="label mono">05 / FAQ</div>
-      <div>
-        <h2 class="reveal">The <em>obvious questions</em>, answered.</h2>
-      </div>
+      <h2 class="reveal">The obvious questions, answered.</h2>
     </div>
 
     <div class="faq-list">
       <details class="faq-item reveal">
-        <summary>How do engagements typically work? <span class="icon">+</span></summary>
+        <summary>How do engagements typically work? <span class="icon"></span></summary>
         <div class="answer">After aligning on scope, we embed with your team and review your financials, operations, and systems. From there, engagements typically run three to six months at a defined weekly time commitment or deliverable output. For fundraising support, engagements are scoped to the raise itself.</div>
       </details>
       <details class="faq-item reveal">
-        <summary>What does it cost? <span class="icon">+</span></summary>
+        <summary>What does it cost? <span class="icon"></span></summary>
         <div class="answer">Engagements are priced by scope and time commitment, not hourly. A typical three to six month embedded engagement runs in the range of a senior operator's fractional salary, well below the fully loaded cost of a full-time hire. We'll give you a firm number after the diagnostic.</div>
       </details>
       <details class="faq-item reveal">
-        <summary>How is this different from hiring a COO or CFO full time? <span class="icon">+</span></summary>
+        <summary>How is this different from hiring a COO or CFO full time? <span class="icon"></span></summary>
         <div class="answer">You get senior operator experience from day one, with no 90-day ramp, no equity package, and no long-term commitment. When your company is ready for a full-time leader, we help you hire them and hand off cleanly.</div>
       </details>
       <details class="faq-item reveal">
-        <summary>Do you work with companies outside Healthcare and Life Sciences? <span class="icon">+</span></summary>
+        <summary>Do you work with companies outside Healthcare and Life Sciences? <span class="icon"></span></summary>
         <div class="answer">Occasionally, when the problem fits and the timing works. But Gusty Group's deepest value is in regulated health and life sciences contexts, and that's where we focus.</div>
       </details>
       <details class="faq-item reveal">
-        <summary>What stages do you work with? <span class="icon">+</span></summary>
+        <summary>What stages do you work with? <span class="icon"></span></summary>
         <div class="answer">While it depends on each engagement, Seed through Series B is our sweet spot. Earlier than seed usually doesn't have the budget or the problems that justify fractional ops. Later than Series B usually needs full-time leadership, not fractional.</div>
       </details>
       <details class="faq-item reveal">
-        <summary>Can you work with our existing finance or ops person? <span class="icon">+</span></summary>
+        <summary>Can you work with our existing finance or ops person? <span class="icon"></span></summary>
         <div class="answer">Yes, and often that's the best setup. We work alongside controllers, bookkeepers, ops managers, and chiefs of staff to level up what's there rather than replace it.</div>
       </details>
     </div>
@@ -736,8 +836,7 @@
 
 <section class="final" id="book">
   <div class="container">
-    <div class="label mono reveal">Let's talk</div>
-    <h2 class="reveal">Let's see if this is a <em>fit</em>.</h2>
+    <h2 class="reveal">Let's see if this is a fit.</h2>
     <p class="reveal">Thirty minutes, no prep required. Bring the problem you're wrestling with this week and we'll figure out whether Gusty Group can help &mdash; or whether someone else is the better call.</p>
     <div class="cta-row reveal">
       <a href="https://calendar.app.google/nnvAaL5ga6NigQVj9" target="_blank" rel="noopener" class="btn-primary">Book a 30-minute call<span class="arrow">&#8599;</span></a>
@@ -766,7 +865,7 @@
       <div class="brand">Gusty Group</div>
       <div>
         <a href="https://www.linkedin.com/in/chris-gusty/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:hello@gustygroup.com">Email</a>
+        <a href="mailto:hello@gustygroup.co">Email</a>
         <a href="#book">Book a Call</a>
       </div>
     </div>
@@ -808,8 +907,7 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.reveal').forEach((el, i) => {
-    el.style.transitionDelay = (i % 4) * 60 + 'ms';
+  document.querySelectorAll('.reveal').forEach((el) => {
     io.observe(el);
   });
 </script>
