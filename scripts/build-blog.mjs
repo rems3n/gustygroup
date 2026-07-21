@@ -43,6 +43,10 @@ const fmtDate = (d) => new Date(`${isoDate(d)}T12:00:00Z`).toLocaleDateString('e
 	month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC',
 });
 
+/* Pages CMS reference fields may store "chris-gusty", "chris-gusty.md", or a
+   full path depending on the token used — normalise to the bare slug. */
+const refSlug = (v) => (v == null ? '' : String(v).split('/').pop().replace(/\.md$/i, ''));
+
 const initials = (name = '') => name.trim().split(/\s+/).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
 
 /** Read every .md in a directory into {slug, ...frontmatter, body}. */
@@ -123,7 +127,7 @@ mkdirSync(BLOG_DIR, { recursive: true });
 for (const f of readdirSync(BLOG_DIR).filter((f) => f.endsWith('.html'))) rmSync(join(BLOG_DIR, f));
 
 for (const post of posts) {
-	const author = authors[post.author];
+	const author = authors[refSlug(post.author)];
 	if (!author) console.warn(`! post "${post.slug}" references unknown author "${post.author}"`);
 
 	const others = posts.filter((p) => p.slug !== post.slug);
@@ -132,7 +136,7 @@ for (const post of posts) {
 		.concat(others.filter((p) => p.category !== post.category))
 		.slice(0, 3);
 
-	const lead = resourceBySlug[post.leadMagnet];
+	const lead = resourceBySlug[refSlug(post.leadMagnet)];
 	const url = `${SITE}/blog/${post.slug}.html`;
 
 	writeFileSync(join(BLOG_DIR, `${post.slug}.html`), fill(tpl.article, {
@@ -185,7 +189,7 @@ const postCard = (p) => `    <article class="post" data-cat="${esc(p.category)}"
       <span class="tag">${esc(p.category)}</span>
       <h3><a href="blog/${p.slug}.html">${esc(p.title)}</a></h3>
       <p>${esc(p.excerpt)}</p>
-      <div class="pmeta"><span>${esc(authors[p.author]?.name || 'Gusty Group')}</span><span class="dot"></span><span>${fmtDate(p.date)}</span><span class="dot"></span><span>${esc(p.readTime || 5)} min</span></div>
+      <div class="pmeta"><span>${esc(authors[refSlug(p.author)]?.name || 'Gusty Group')}</span><span class="dot"></span><span>${fmtDate(p.date)}</span><span class="dot"></span><span>${esc(p.readTime || 5)} min</span></div>
     </article>`;
 
 writeFileSync(join(CRED, 'blog.html'), fill(tpl.list, {
@@ -200,7 +204,7 @@ writeFileSync(join(CRED, 'blog.html'), fill(tpl.list, {
       <span class="tag">${esc(featured.category)}</span>
       <h2><a href="blog/${featured.slug}.html">${esc(featured.title)}</a></h2>
       <p>${esc(featured.excerpt)}</p>
-      <div class="pmeta"><span>${esc(authors[featured.author]?.name || 'Gusty Group')}</span><span class="dot"></span><span>${fmtDate(featured.date)}</span><span class="dot"></span><span>${esc(featured.readTime || 5)} min read</span></div>
+      <div class="pmeta"><span>${esc(authors[refSlug(featured.author)]?.name || 'Gusty Group')}</span><span class="dot"></span><span>${fmtDate(featured.date)}</span><span class="dot"></span><span>${esc(featured.readTime || 5)} min read</span></div>
       <div style="margin-top:22px"><a href="blog/${featured.slug}.html" class="btn btn-olive">Read the article <span>&#8599;</span></a></div>
     </div>
   </article>

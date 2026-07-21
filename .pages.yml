@@ -46,7 +46,8 @@ content:
         required: true
         options:
           collection: authors
-          value: '{filename}'
+          search: 'name,fields.name'
+          value: '{name}'
           label: '{fields.name}'
       - name: date
         label: Publish date
@@ -76,7 +77,8 @@ content:
         type: reference
         options:
           collection: resources
-          value: '{filename}'
+          search: 'name,fields.title'
+          value: '{name}'
           label: '{fields.title}'
       - name: takeaway
         label: Key takeaway
