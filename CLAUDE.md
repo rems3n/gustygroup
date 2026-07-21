@@ -16,7 +16,7 @@ Marketing site for Gusty Group LLC — a fractional ops and finance firm for hea
 - `/CNAME` — custom domain
 - `/.nojekyll` — skip Jekyll processing on Pages
 - `/cred/` — credentialing & licensing sub-site (see below)
-- `/credentialing-licensing-site/` — the Claude design system the sub-site was built from (source of truth for tokens and components)
+- `/credentialing-licensing-site/` — the Claude design system the sub-site was built from. **Local only, gitignored**: GitHub Pages serves the repo root, so publishing it put a stale duplicate of the whole site (same `<title>` as the real homepage) and an internal `.docx` on the public web. `/cred/` carries its own copy of `styles.css`, `tokens/`, and `assets/`, so nothing depends on it at build or run time.
 
 ## The /cred sub-site
 
