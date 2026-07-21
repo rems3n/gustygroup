@@ -19,7 +19,7 @@ featured: false
 takeaway: Insurance credentialing takes 60–120 days for commercial payers, 30-90
   for Medicare, and 30–180 for Medicaid. Here's what speeds it up—and what
   quietly adds months.
-draft: true
+draft: false
 ---
 Quick answer: Insurance credentialing typically takes 60–120 days for commercial payers (Aetna, BCBS, Cigna, UnitedHealthcare), 30–90 days for Medicare, and anywhere from 30-180 days for Medicaid depending on your state. Anyone promising "2 weeks" is describing something other than credentialing.
 
