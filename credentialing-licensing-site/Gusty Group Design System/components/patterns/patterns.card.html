@@ -1,0 +1,33 @@
+<!-- @dsCard group="Components" viewport="700x460" name="Patterns" subtitle="Situation card, keep item & FAQ" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>body{margin:0;background:var(--mist);padding:24px;font-family:var(--font-body)}</style>
+</head><body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const { SituationCard, KeepItem, FaqItem } = window.GustyGroupDesignSystem_2bd7dd;
+function Demo(){return (
+  <div style={{display:'grid',gridTemplateColumns:'320px 1fr',gap:'24px',alignItems:'start'}}>
+    <SituationCard index="i." title={'\u201CWe just closed our seed.\u201D'}>
+      Your board now exists. Your runway spreadsheet is already wrong. We build the financial model, board reporting cadence, and operating rhythm your investors now expect.
+    </SituationCard>
+    <div>
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',borderTop:'1px solid var(--ink)',border:'1px solid var(--rule)',background:'var(--paper)'}}>
+        <KeepItem title="A financial model that updates itself." style={{borderRight:'1px solid var(--rule)',borderBottom:'1px solid var(--rule)'}}>Wired to your accounting system, CRM, and payroll. Actuals flow in automatically.</KeepItem>
+        <KeepItem title="An AI-audited ops stack." style={{borderBottom:'1px solid var(--rule)'}}>A documented map of which workflows are automated, which are human, and why.</KeepItem>
+      </div>
+      <div style={{background:'var(--paper)',marginTop:'20px',padding:'0 20px'}}>
+        <FaqItem question="What does it cost?" open>Engagements are priced by scope and time commitment, not hourly. A typical three to six month engagement runs in the range of a senior operator's fractional salary.</FaqItem>
+        <FaqItem question="What stages do you work with?">Seed through Series B is our sweet spot.</FaqItem>
+      </div>
+    </div>
+  </div>
+);}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body></html>

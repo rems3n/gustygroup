@@ -1,0 +1,154 @@
+# Pages CMS configuration — https://pagescms.org/docs/
+#
+# Admin UI lives at https://app.pagescms.org (sign in with GitHub and install the
+# Pages CMS app on THIS repo only). Nothing is self-hosted and no token is stored.
+#
+# Saving here commits Markdown to the repo; the build-blog GitHub Action then
+# regenerates the static HTML under cred/. Never edit cred/blog/*.html,
+# cred/blog.html, cred/resources.html, or cred/sitemap.xml by hand — they are
+# generated and will be overwritten.
+
+media:
+  input: cred/media
+  output: /cred/media
+
+content:
+  - name: posts
+    label: Blog posts
+    type: collection
+    path: cred/blog/posts
+    filename: '{fields.title}.md'
+    view:
+      fields: [title, category, date, draft]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: category
+        label: Category
+        type: select
+        required: true
+        options:
+          values:
+            - License management
+            - Credentialing
+            - Payer enrollment
+            - Revenue
+            - Operations
+      - name: author
+        label: Author
+        type: reference
+        required: true
+        options:
+          collection: authors
+          value: '{filename}'
+          label: '{fields.name}'
+      - name: date
+        label: Publish date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: readTime
+        label: Read time (minutes)
+        type: number
+        default: 5
+      - name: excerpt
+        label: Excerpt
+        type: text
+        required: true
+        description: Used as the article standfirst, the listing summary, and the meta description.
+      - name: cover
+        label: Cover image
+        type: image
+        description: Optional. Without one, a generated cover in the brand style is used.
+      - name: featured
+        label: Feature at the top of the blog
+        type: boolean
+        default: false
+      - name: leadMagnet
+        label: Sidebar resource
+        type: reference
+        options:
+          collection: resources
+          value: '{filename}'
+          label: '{fields.title}'
+      - name: takeaway
+        label: Key takeaway
+        type: text
+        description: Optional. Rendered as the highlighted takeaway box.
+      - name: draft
+        label: Draft
+        type: boolean
+        default: true
+        description: Drafts are never published to the site.
+      - name: body
+        label: Article
+        type: rich-text
+
+  - name: resources
+    label: Downloadable resources
+    type: collection
+    path: cred/resources
+    filename: '{fields.title}.md'
+    view:
+      fields: [title, kicker, draft]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: kicker
+        label: Kicker
+        type: string
+        default: Free resource
+        description: Small label above the title, e.g. Worksheet or Checklist.
+      - name: description
+        label: Description
+        type: text
+        required: true
+      - name: file
+        label: File
+        type: file
+        description: The PDF or document visitors download. Without one, the button asks them to request it.
+      - name: cover
+        label: Cover image
+        type: image
+      - name: noun
+        label: Button noun
+        type: string
+        default: resource
+        description: Completes "Get the ___" and "Request the ___".
+      - name: draft
+        label: Draft
+        type: boolean
+        default: true
+
+  - name: authors
+    label: Authors
+    type: collection
+    path: cred/authors
+    filename: '{fields.name}.md'
+    view:
+      fields: [name, role]
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: role
+        label: Role
+        type: string
+        description: Shown as "Role, Gusty Group" on the author card.
+      - name: bio
+        label: Bio
+        type: text
+      - name: photo
+        label: Photo
+        type: image
+        description: Optional. Without one, initials are shown in the brand style.

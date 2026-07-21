@@ -1,0 +1,6 @@
+/* Gusty Group — Webfonts
+   EB Garamond via Google Fonts · General Sans via Fontshare.
+   Both are hosted CDN webfonts (the source site links them directly);
+   no local binaries ship with this system. */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap');

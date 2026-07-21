@@ -1,0 +1,339 @@
+/* Gusty Group — Editorial graphics
+   Replaces the design-runtime <image-slot> placeholders with real, self-contained
+   visuals built only from design tokens. Every graphic fills a .mediaframe, which
+   already supplies the border, mist ground, and aspect-ratio.
+
+   Loaded by all pages — kept separate from site.css because index.html carries its
+   own inline <style> block and does not link site.css. */
+
+.gfx {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	font-family: var(--font-body);
+}
+
+/* Shared hairline grid ground — reads as ruled paper, not empty space. */
+.gfx-grid::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(to right, var(--rule) 1px, transparent 1px),
+		linear-gradient(to bottom, var(--rule) 1px, transparent 1px);
+	background-size: 34px 34px;
+	opacity: .28;
+	pointer-events: none;
+}
+
+/* Progress bars — same treatment as the hero .dash tracks. */
+.gfx-track {
+	height: 6px;
+	background: rgba(26, 26, 23, .1);
+	border-radius: 99px;
+	overflow: hidden;
+}
+
+.gfx-track i {
+	display: block;
+	height: 100%;
+	background: var(--olive);
+	border-radius: 99px;
+	transform-origin: left;
+	transform: scaleX(var(--w, 1));
+}
+
+/* ───────────────────────── panel ─────────────────────────
+   Service + specialty split images, and the who-we-serve band.
+   Oversized olive icon, display-font caption, three status rows. */
+
+.gfx-panel {
+	justify-content: center;
+	gap: 18px;
+	padding: clamp(22px, 6%, 40px);
+	background: var(--mist);
+}
+
+.gfx-panel > * {
+	position: relative;
+}
+
+.gfx-panel .gfx-ico {
+	width: clamp(32px, 4vw, 44px);
+	height: clamp(32px, 4vw, 44px);
+	color: var(--olive);
+}
+
+.gfx-panel .gfx-ico svg {
+	width: 100%;
+	height: 100%;
+	stroke-width: 1.4;
+}
+
+.gfx-panel .gfx-cap {
+	font-family: var(--font-display);
+	font-weight: 500;
+	font-size: clamp(16px, 2.1vw, 22px);
+	line-height: 1.25;
+	letter-spacing: -.01em;
+	color: var(--ink);
+	max-width: 24ch;
+}
+
+.gfx-rows {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-top: 4px;
+}
+
+.gfx-row {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+
+.gfx-row .gfx-lbl {
+	display: flex;
+	align-items: baseline;
+	gap: 10px;
+	font-size: 12px;
+	letter-spacing: .04em;
+	color: var(--ink-soft);
+}
+
+.gfx-row .gfx-lbl b {
+	margin-left: auto;
+	font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: .06em;
+	color: var(--olive);
+}
+
+/* Inverted variant — .olive sections flip the mediaframe to a translucent white. */
+.olive .gfx-panel {
+	background: transparent;
+}
+
+.olive .gfx-panel .gfx-ico {
+	color: var(--paper);
+}
+
+.olive .gfx-panel .gfx-cap {
+	color: var(--paper);
+}
+
+.olive .gfx-panel .gfx-row .gfx-lbl {
+	color: rgba(255, 255, 255, .82);
+}
+
+.olive .gfx-panel .gfx-row .gfx-lbl b {
+	color: var(--paper);
+}
+
+.olive .gfx-grid::before {
+	background-image:
+		linear-gradient(to right, rgba(255, 255, 255, .5) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(255, 255, 255, .5) 1px, transparent 1px);
+	opacity: .18;
+}
+
+.olive .gfx-track {
+	background: rgba(255, 255, 255, .2);
+}
+
+.olive .gfx-track i {
+	background: var(--paper);
+}
+
+/* ───────────────────────── cover ─────────────────────────
+   Blog article covers + the lead-magnet card. Olive ground with an oxblood
+   corner wedge, icon, and category label. Also the fallback when a CMS post
+   ships without a cover image. */
+
+.gfx-cover {
+	justify-content: space-between;
+	padding: clamp(16px, 5%, 26px);
+	background: var(--olive);
+	color: var(--paper);
+}
+
+.gfx-cover::after {
+	content: "";
+	position: absolute;
+	right: -18%;
+	bottom: -42%;
+	width: 78%;
+	aspect-ratio: 1;
+	background: var(--oxblood);
+	transform: rotate(32deg);
+	opacity: .9;
+}
+
+.gfx-cover > * {
+	position: relative;
+	z-index: 1;
+}
+
+.gfx-cover .gfx-kicker {
+	font-size: 10.5px;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: rgba(255, 255, 255, .78);
+}
+
+.gfx-cover .gfx-ico {
+	width: 30px;
+	height: 30px;
+	margin-top: auto;
+	color: var(--paper);
+}
+
+.gfx-cover .gfx-ico svg {
+	width: 100%;
+	height: 100%;
+	stroke-width: 1.5;
+}
+
+.gfx-cover .gfx-t {
+	font-family: var(--font-display);
+	font-weight: 500;
+	font-size: clamp(15px, 1.5vw, 19px);
+	line-height: 1.2;
+	letter-spacing: -.008em;
+	margin-top: 10px;
+	max-width: 18ch;
+}
+
+/* Oxblood ground variant, to vary the grid of covers. */
+.gfx-cover.alt {
+	background: var(--oxblood);
+}
+
+.gfx-cover.alt::after {
+	background: var(--olive);
+}
+
+/* Light variant for the sidebar lead magnet, which sits on a mist card. */
+.gfx-cover.paper {
+	background: var(--stone);
+	color: var(--ink);
+}
+
+.gfx-cover.paper::after {
+	background: var(--olive);
+	opacity: .16;
+}
+
+.gfx-cover.paper .gfx-kicker {
+	color: var(--olive);
+}
+
+.gfx-cover.paper .gfx-ico {
+	color: var(--olive);
+}
+
+/* ───────────────────────── avatar ─────────────────────────
+   Byline and author-card portraits. Olive disc, display-font monogram. */
+
+.gfx-avatar {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background: var(--olive);
+	color: var(--paper);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: var(--font-display);
+	font-weight: 500;
+	font-size: .9em;
+	letter-spacing: .04em;
+	line-height: 1;
+	overflow: hidden;
+}
+
+/* ───────────────────────── chart ─────────────────────────
+   Article hero + inline figures. Pure-CSS column chart. */
+
+.gfx-chart {
+	justify-content: flex-end;
+	gap: 16px;
+	padding: clamp(20px, 5%, 34px);
+	background: var(--mist);
+}
+
+.gfx-chart > * {
+	position: relative;
+}
+
+.gfx-chart .gfx-head {
+	position: absolute;
+	top: clamp(20px, 5%, 34px);
+	left: clamp(20px, 5%, 34px);
+	right: clamp(20px, 5%, 34px);
+}
+
+.gfx-chart .gfx-kicker {
+	font-size: 10.5px;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: var(--olive);
+}
+
+.gfx-chart .gfx-cap {
+	font-family: var(--font-display);
+	font-weight: 500;
+	font-size: clamp(15px, 1.8vw, 20px);
+	line-height: 1.25;
+	color: var(--ink);
+	margin-top: 6px;
+	max-width: 30ch;
+}
+
+.gfx-bars {
+	display: flex;
+	align-items: flex-end;
+	gap: clamp(8px, 2.4%, 18px);
+	height: 46%;
+	border-bottom: 1px solid var(--rule);
+	padding-bottom: 1px;
+}
+
+.gfx-bars span {
+	flex: 1;
+	height: var(--h, 50%);
+	background: var(--olive);
+	opacity: .82;
+}
+
+.gfx-bars span.hi {
+	background: var(--oxblood);
+	opacity: 1;
+}
+
+.gfx-axis {
+	display: flex;
+	gap: clamp(8px, 2.4%, 18px);
+	font-size: 10px;
+	letter-spacing: .06em;
+	color: var(--ink-dim);
+	margin-top: -6px;
+}
+
+.gfx-axis span {
+	flex: 1;
+	text-align: center;
+}
+
+@media (max-width: 700px) {
+	.gfx-panel .gfx-cap { max-width: none; }
+	.gfx-rows { max-width: none; }
+	.gfx-axis { display: none; }
+}

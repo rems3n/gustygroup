@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Marketing Site" description="Gusty Group one-page marketing site — nav, hero, situations, deliverables, track record, FAQ, contact." -->
+<helmet>
+<script src="./ds-base.js"></script>
+<style>
+  :root{color-scheme:light}
+  *,*::before,*::after{box-sizing:border-box}
+  a{color:var(--oxblood);text-decoration:underline;text-underline-offset:3px;transition:background .15s,color .15s}
+  a:hover{background:var(--oxblood);color:var(--paper);text-decoration:none}
+  ::selection{background:var(--oxblood);color:var(--paper)}
+</style>
+</helmet>
+<div style="font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.55">
+
+  <div style="position:sticky;top:0;z-index:50">
+    <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.NavBar" hint-size="100%,72px"></x-import>
+  </div>
+
+  <header style="border-bottom:1px solid var(--rule);padding:112px 0 100px">
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:96px;align-items:center">
+      <div style="min-width:0">
+        <h1 style="font-family:var(--font-display);font-weight:500;font-size:clamp(40px,5.2vw,64px);line-height:1.06;letter-spacing:-0.015em;max-width:28ch;margin:0">Fractional ops and finance for <span style="color:var(--olive)">healthcare &amp; life sciences</span> founders, early stage through <span style="color:var(--olive)">growth</span>.</h1>
+        <p style="margin-top:22px;font-family:var(--font-display);font-size:clamp(17px,1.9vw,21px);line-height:1.5;max-width:52ch;color:var(--ink-soft)">Gusty Group installs the financial and operating systems your next board meeting, next hire, and next raise will require. You get a senior operator embedded with your team, plus AI-powered systems that outlast the engagement.</p>
+        <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+          <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.Button" variant="olive" arrow="{{ true }}" href="#book" hint-size="200px,44px">Book a 30-minute call</x-import>
+          <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.Button" variant="ghost-ink" href="#icp" hint-size="150px,44px">See if we're a fit</x-import>
+        </div>
+      </div>
+      <div aria-hidden="true" style="width:100%;max-width:500px;margin-left:auto">
+        <svg viewBox="0 0 300 240" style="width:100%;height:auto;display:block">
+          <line x1="20" y1="200" x2="280" y2="200" stroke="#1A1A17" stroke-width="1" opacity="0.25"></line>
+          <rect x="55" y="140" width="50" height="60" fill="#3D4D2A"></rect>
+          <rect x="125" y="90" width="50" height="110" fill="#3D4D2A"></rect>
+          <rect x="195" y="30" width="50" height="170" fill="#3D4D2A"></rect>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <section id="icp" style="background:var(--mist);padding:96px 0">
+    <div style="max-width:1080px;margin:0 auto;padding:0 32px">
+      <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.SectionHead" title="Situations we're built for." intro="If one of these sounds like your challenge, we should talk." hint-size="100%,180px"></x-import>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+        <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.SituationCard" index="i." title="&ldquo;We just closed our seed.&rdquo;" hint-size="100%,380px">Your board now exists. Your runway spreadsheet is already wrong. We come in for three to six months and build the financial model, board reporting cadence, and operating rhythm your investors now expect.</x-import>
+        <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.SituationCard" index="ii." title="&ldquo;We're raising Series B in six to nine months.&rdquo;" hint-size="100%,380px">Your model doesn't tie to your actuals. Your data room is a mess. We act as your fractional support through the raise: model builds, value creation plans, data room, investor narrative, diligence prep.</x-import>
+        <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.SituationCard" index="iii." title="&ldquo;We want to scale without scaling headcount.&rdquo;" hint-size="100%,380px">You know AI is part of the answer, but you don't know what's safe to automate in a regulated environment. We audit your workflows, build the systems you need to scale, and train your team to run them.</x-import>
+      </div>
+    </div>
+  </section>
+
+  <section id="keep" style="padding:96px 0;border-bottom:1px solid var(--rule)">
+    <div style="max-width:1080px;margin:0 auto;padding:0 32px">
+      <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.SectionHead" title="Most consultants leave behind a deck. Gusty Group leaves behind systems." intro="Every engagement produces working infrastructure your team owns and runs after we're gone. No dependency on us, no black boxes." hint-size="100%,220px"></x-import>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--ink)">
+        <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.KeepItem" title="A financial model that updates itself." style="border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)" hint-size="100%,160px">Wired to your accounting system, your CRM, and your payroll. Actuals flow in automatically. Your runway, burn, and scenario planning stay accurate without a week of month-end cleanup.</x-import>
+        <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.KeepItem" title="An Operating Cadence designed around your team." style="border-bottom:1px solid var(--rule)" hint-size="100%,160px">Strategic planning frameworks, OKR processes, and tracking systems embedded across the organization.</x-import>
+        <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.KeepItem" title="An AI-audited ops stack." style="border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)" hint-size="100%,160px">A documented map of which workflows are automated, which are human, and why. Your team gets a system, not a mess.</x-import>
+        <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.KeepItem" title="A Series B-ready data room." style="border-bottom:1px solid var(--rule)" hint-size="100%,160px">For founders preparing to raise: the model, the metrics, the narrative, and the diligence answers, organized the way investors actually work through them.</x-import>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" style="background:var(--olive);color:var(--paper);padding:96px 0">
+    <div style="max-width:1080px;margin:0 auto;padding:0 32px">
+      <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.SectionHead" title="Where we've done this before." tone="on-dark" hint-size="100%,120px"></x-import>
+      <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.CaseStudy" tag="Flagship · 2018 — 2026" title="Mend Labs" sub="Health tech startup. Gusty Group founder served as Chief Operating Officer, founding through Series A." stats="{{ mendStats }}" hint-size="100%,360px">
+        <p style="margin:0 0 18px">Joined Mend at the founding stage and built the company's full operating system: org structure, operating cadence, OKRs, financial model, and investor narrative. Led $25M+ in fundraising across seed and Series A, owning the model, diligence, and stakeholder management end to end.</p>
+        <p style="margin:0">Grew the team to 40+ employees, signed 20+ B2B contracts serving 10,000+ end users, and stood up the internal data infrastructure and AI workflows that ran the business day to day.</p>
+      </x-import>
+    </div>
+  </section>
+
+  <section style="padding:96px 0;border-bottom:1px solid var(--rule)">
+    <div style="max-width:1080px;margin:0 auto;padding:0 32px">
+      <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.SectionHead" title="The obvious questions, answered." hint-size="100%,120px"></x-import>
+      <div style="max-width:800px;margin:0 auto;border-top:1px solid var(--ink)">
+        <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.FaqItem" question="How do engagements typically work?" open="{{ true }}" hint-size="100%,120px">After aligning on scope, we embed with your team and review your financials, operations, and systems. From there, engagements typically run three to six months at a defined weekly time commitment or deliverable output.</x-import>
+        <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.FaqItem" question="What does it cost?" hint-size="100%,80px">Engagements are priced by scope and time commitment, not hourly. A typical three to six month embedded engagement runs in the range of a senior operator's fractional salary, well below the fully loaded cost of a full-time hire.</x-import>
+        <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.FaqItem" question="What stages do you work with?" style="border-bottom:1px solid var(--ink)" hint-size="100%,80px">While it depends on each engagement, Seed through Series B is our sweet spot.</x-import>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" style="padding:120px 0 96px">
+    <div style="max-width:1080px;margin:0 auto;padding:0 32px">
+      <div style="font-size:14px;color:var(--ink-dim);margin-bottom:18px">Contact</div>
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:clamp(48px,7vw,88px);line-height:0.96;letter-spacing:-0.02em;max-width:18ch;margin:0 0 28px">Let's see if this is a fit.</h2>
+      <p style="font-family:var(--font-display);font-size:clamp(18px,2vw,22px);line-height:1.45;max-width:56ch;margin:0 0 40px">Thirty minutes, no prep required. Bring the problem you're wrestling with this week and we'll figure out whether Gusty Group can help — or whether someone else is the better call.</p>
+      <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.Button" variant="olive" arrow="{{ true }}" href="#book" hint-size="200px,44px">Book a 30-minute call</x-import>
+      <div style="margin-top:56px;max-width:480px">
+        <p style="font-size:14px;color:var(--ink-dim);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--rule)">Or reach out directly</p>
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div style="display:flex;gap:24px;flex-wrap:wrap">
+            <div style="flex:1;min-width:180px"><x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.Input" placeholder="Name" hint-size="100%,40px"></x-import></div>
+            <div style="flex:1;min-width:180px"><x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.Input" placeholder="Email" type="email" hint-size="100%,40px"></x-import></div>
+          </div>
+          <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.Textarea" placeholder="What can we help with?" rows="{{ 3 }}" hint-size="100%,80px"></x-import>
+          <x-import component-from-global-scope="GustyGroupDesignSystem_2bd7dd.Button" variant="primary" style="align-self:flex-start;margin-top:12px" hint-size="90px,44px">Send</x-import>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid var(--ink);padding:48px 0 96px;font-size:14px;color:var(--ink-dim)">
+    <div style="max-width:1080px;margin:0 auto;padding:0 32px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:18px">
+        <div style="font-family:var(--font-display);font-size:18px;color:var(--ink)">Gusty Group</div>
+        <div style="display:flex;gap:24px">
+          <a href="#">LinkedIn</a><a href="#">Email</a><a href="#book">Book a Call</a>
+        </div>
+      </div>
+      <div style="margin-top:28px;padding-top:22px;border-top:1px solid var(--rule);font-size:13px;line-height:1.5">© 2026 Gusty Group LLC. Fractional ops and finance for health tech and biotech founders.</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      mendStats: [
+        { value: '$25M+', label: 'Raised, seed through Series A' },
+        { value: '0 \u2192 40', label: 'Employees built and managed' },
+        { value: '20+', label: 'B2B contracts signed' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

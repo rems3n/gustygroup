@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Blog — Gusty Group</title>
+<meta name="description" content="Practical guidance on licensing, credentialing, and payer enrollment — written for the practice managers and MSOs who live with the deadlines.">
+<link rel="canonical" href="{{SITE}}/blog.html">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="graphics.css">
+</head><body id="top">
+<nav class="top"><div class="wrap inner">
+  <a href="./" class="logo" aria-label="Gusty Group home"><span class="l1">GUSTY</span><span class="l2">GROUP</span></a>
+  <ul class="menu">
+    <li><a href="./">Home</a></li>
+    <li><a href="./#services">Solutions <span class="car">&#9660;</span></a>
+      <ul class="sub">
+        <li><a href="services-license-management.html">License management</a></li>
+        <li><a href="services-provider-credentialing.html">Provider Credentialing</a></li>
+        <li><a href="services-payer-enrollment.html">Payer Enrollment</a></li>
+      </ul>
+    </li>
+    <li><a href="who-we-serve.html">Who we serve <span class="car">&#9660;</span></a>
+      <ul class="sub">
+        <li><a href="who-we-serve-registered-dietitians.html">Registered Dietitians</a></li>
+        <li><a href="who-we-serve-behavioral-health.html">Behavioral Health</a></li>
+        <li><a href="who-we-serve-obesity-medicine.html">Obesity Medicine</a></li>
+        <li><a href="who-we-serve-primary-care.html">Primary Care</a></li>
+        <li><a href="who-we-serve-digital-health.html">Digital Health</a></li>
+        <li><a href="who-we-serve-mso.html">Managed Services Organizations (MSO)</a></li>
+      </ul>
+    </li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="navcta">Contact us</a></li>
+  </ul>
+</div></nav>
+<div class="wrap crumb"><a href="./">Home</a> &nbsp;/&nbsp; Blog</div>
+
+<header class="blog-hero"><div class="wrap">
+  <div class="eyebrow">The Gusty Group blog</div>
+  <h1>Field notes on getting providers billable.</h1>
+  <p class="sub">Practical guidance on licensing, credentialing, and payer enrollment — written for the practice managers and MSOs who live with the deadlines.</p>
+  <div class="cat-row">
+{{CATEGORIES}}
+  </div>
+</div></header>
+
+{{FEATURED}}
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head" style="margin-bottom:8px"><h2 style="font-size:clamp(26px,3vw,34px)">Latest articles.</h2></div>
+  <div class="postgrid">
+{{POSTS}}
+  </div>
+  <p class="noresults" hidden style="margin-top:28px;color:var(--ink-dim)">No articles in this category yet.</p>
+</div></section>
+
+<section class="newsletter"><div class="wrap"><div class="nwrap">
+  <h2>Field notes, once a month.</h2>
+  <p>Practical guidance on licensing, credentialing, and payer enrollment — no filler.</p>
+  <form class="nform" action="https://formspree.io/f/xyknnggy" method="POST">
+    <input type="email" name="email" placeholder="you@practice.com" required>
+    <input type="hidden" name="_subject" value="Newsletter signup — gustygroup.com/cred blog">
+    <input type="hidden" name="_source" value="gustygroup.com/cred/blog.html">
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+    <button type="submit" class="btn btn-ondark">Subscribe</button>
+  </form>
+  <div class="fine">One email a month. Unsubscribe anytime.</div>
+</div></div></section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div class="fbrand"><span class="l1">GUSTY</span><br><span class="l2">GROUP</span>
+      <p>Licensing, credentialing, and payer enrollment for healthcare practices.</p></div>
+    <div><div class="ftitle">Solutions</div><ul class="flist">
+      <li><a href="services-license-management.html">License management</a></li>
+      <li><a href="services-provider-credentialing.html">Provider credentialing</a></li>
+      <li><a href="services-payer-enrollment.html">Payer enrollment</a></li></ul></div>
+    <div><div class="ftitle">Who we serve</div><ul class="flist">
+      <li><a href="who-we-serve-registered-dietitians.html">Registered Dietitians</a></li>
+      <li><a href="who-we-serve-behavioral-health.html">Behavioral Health</a></li>
+      <li><a href="who-we-serve-obesity-medicine.html">Obesity Medicine</a></li>
+      <li><a href="who-we-serve-primary-care.html">Primary Care</a></li>
+      <li><a href="who-we-serve-digital-health.html">Digital Health</a></li>
+      <li><a href="who-we-serve-mso.html">MSOs</a></li></ul></div>
+    <div><div class="ftitle">Company</div><ul class="flist">
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact us</a></li></ul></div>
+  </div>
+  <div class="fine">© 2026 Gusty Group LLC. Licensing, credentialing &amp; payer enrollment.</div>
+</div></footer>
+<script src="https://unpkg.com/lucide@0.474.0/dist/umd/lucide.min.js"></script>
+<script src="site-icons.js"></script>
+<script>
+/* Category filter — progressive enhancement over the static grid. */
+(function () {
+	var chips = document.querySelectorAll('.cat-row .cat');
+	var posts = document.querySelectorAll('.postgrid .post');
+	var empty = document.querySelector('.noresults');
+	chips.forEach(function (chip) {
+		chip.addEventListener('click', function () {
+			var want = chip.dataset.cat || '';
+			chips.forEach(function (c) { c.classList.toggle('on', c === chip); });
+			var shown = 0;
+			posts.forEach(function (p) {
+				var hit = !want || p.dataset.cat === want;
+				p.hidden = !hit;
+				if (hit) shown++;
+			});
+			if (empty) empty.hidden = shown > 0;
+		});
+	});
+})();
+</script>
+</body></html>

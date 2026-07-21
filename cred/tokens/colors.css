@@ -1,0 +1,37 @@
+/* Gusty Group — Color tokens
+   Base palette lifted verbatim from gustygroup.co index.html :root */
+:root {
+  /* — Base palette — */
+  --olive:      #3D4D2A;   /* primary brand green — CTAs, accents, dark surfaces */
+  --olive-deep: #2A361B;   /* pressed/hover olive, borders on olive surfaces */
+  --ink:        #1A1A17;   /* near-black text + primary buttons */
+  --ink-soft:   #33332E;   /* softer body text on light surfaces */
+  --ink-dim:    #5A5A52;   /* muted labels, captions, fine print */
+  --rule:       #C7C2B3;   /* hairline rules / borders on paper */
+  --paper:      #FFFFFF;   /* primary background */
+  --stone:      #E8E6DC;   /* warm neutral fill */
+  --mist:       #EEF0F3;   /* cool light surface (alt section band) */
+  --oxblood:    #6B1F1F;   /* link + selection + hover-invert accent */
+
+  /* — Semantic aliases — */
+  --bg-page:        var(--paper);
+  --bg-surface:     var(--paper);
+  --bg-alt:         var(--mist);
+  --bg-inverse:     var(--olive);
+  --bg-fill:        var(--stone);
+
+  --text-primary:   var(--ink);
+  --text-body:      var(--ink-soft);
+  --text-muted:     var(--ink-dim);
+  --text-inverse:   var(--paper);
+  --text-accent:    var(--olive);
+  --text-link:      var(--oxblood);
+
+  --border-hairline: var(--rule);
+  --border-strong:   var(--ink);
+  --border-accent:   var(--olive);
+
+  --accent:          var(--olive);
+  --accent-deep:     var(--olive-deep);
+  --highlight:       var(--oxblood);
+}

@@ -1,3 +1,4 @@
 node_modules/
 blog-astro/dist/
 blog-astro/.astro/
+.DS_Store
