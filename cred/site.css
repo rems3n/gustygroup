@@ -316,8 +316,12 @@ footer .fine{margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,
 .cform .frow{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .cform label{display:block;width:100%}
 .cform .flbl{display:block;font-size:13px;color:var(--ink-dim);margin-bottom:6px}
-.cform input,.cform textarea{width:100%;font-family:var(--font-body);font-size:15px;color:var(--ink);padding:12px 0 8px;border:0;border-bottom:1px solid var(--ink);background:transparent;border-radius:0;outline:none;resize:vertical}
-.cform input:focus,.cform textarea:focus{padding-bottom:7px;border-bottom:2px solid var(--oxblood)}
+.cform input,.cform textarea,.cform select{width:100%;font-family:var(--font-body);font-size:15px;color:var(--ink);padding:12px 0 8px;border:0;border-bottom:1px solid var(--ink);background:transparent;border-radius:0;outline:none;resize:vertical}
+.cform input:focus,.cform textarea:focus,.cform select:focus{padding-bottom:7px;border-bottom:2px solid var(--oxblood)}
+/* native select chrome removed so it matches the underline inputs; chevron drawn inline */
+.cform select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:22px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235A5A52' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 0 center;background-size:14px}
+/* muted until a real choice is made */
+.cform select:has(option[value='']:checked){color:var(--ink-dim)}
 .cform input::placeholder,.cform textarea::placeholder{color:var(--ink-dim)}
 .cform .btn{align-self:flex-start;margin-top:6px}
 .cform .consent{font-size:12.5px;line-height:1.5;color:var(--ink-dim);max-width:52ch}

@@ -67,8 +67,31 @@
         </div>
         <div class="frow">
           <label><span class="flbl">Practice or company</span><input type="text" name="company"></label>
-          <label><span class="flbl">Phone</span><input type="tel" name="phone"></label>
+          <label><span class="flbl">Website</span><input type="url" name="website" placeholder="https://"></label>
         </div>
+        <div class="frow">
+          <label><span class="flbl">Phone</span><input type="tel" name="phone"></label>
+          <label><span class="flbl">Provider group size</span>
+            <select name="provider_group_size">
+              <option value="">Select&hellip;</option>
+              <option>Solo provider</option>
+              <option>2&ndash;5 providers</option>
+              <option>6&ndash;15 providers</option>
+              <option>16&ndash;50 providers</option>
+              <option>50+ providers</option>
+            </select>
+          </label>
+        </div>
+        <label><span class="flbl">What are you interested in?</span>
+          <select name="service_interest">
+            <option value="">Select&hellip;</option>
+            <option>License management</option>
+            <option>Provider credentialing</option>
+            <option>Payer enrollment &amp; contracting</option>
+            <option>Consulting</option>
+            <option>All of the above</option>
+          </select>
+        </label>
         <label><span class="flbl">What can we help with?</span><textarea name="services" rows="4" placeholder="Provider count, states you operate in, payers you need, and anything currently stuck."></textarea></label>
         <button type="submit" class="btn btn-olive">Send message <span>&#8599;</span></button>
         <p class="consent">We use what you send here only to reply to your enquiry. No lists, no sharing.</p>
