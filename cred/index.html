@@ -7,6 +7,8 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="graphics.css">
+<link rel="stylesheet" href="motion.css">
+<script src="reveal.js"></script>
 <style>
   *,*::before,*::after{box-sizing:border-box}*{margin:0;padding:0}
   html{scroll-behavior:smooth;scroll-padding-top:80px}
@@ -27,10 +29,10 @@
   .menu>li>a{display:flex;align-items:center;gap:5px;color:var(--paper);font-size:14px;padding:10px 12px}
   .menu>li>a .car{font-size:9px;opacity:.8}
   .menu>li:hover>a{background:var(--oxblood)}
-  .sub{position:absolute;top:100%;left:0;min-width:250px;padding:8px 0;background:var(--paper);border:1px solid var(--rule);box-shadow:0 14px 30px rgba(26,26,23,.14);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .14s,transform .14s}
+  .menu .sub{position:absolute;top:100%;left:0;min-width:250px;padding:8px 0;background:var(--paper);border:1px solid var(--rule);box-shadow:0 14px 30px rgba(26,26,23,.14);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .14s,transform .14s}
   .menu>li:hover .sub{opacity:1;visibility:visible;transform:translateY(0)}
-  .sub a{display:block;color:var(--ink);font-size:14px;padding:10px 20px}
-  .sub a:hover{background:var(--mist);color:var(--oxblood)}
+  .menu .sub a{display:block;color:var(--ink);font-size:14px;padding:10px 20px}
+  .menu .sub a:hover{background:var(--mist);color:var(--oxblood)}
   .navcta{border:1px solid var(--paper);color:var(--paper);font-weight:500;font-size:13px;padding:8px 16px;margin-left:8px}
   .navcta:hover{background:var(--paper);color:var(--olive)}
 
@@ -51,41 +53,62 @@
   /* hero */
   .hero{border-bottom:1px solid var(--rule);padding:104px 0 84px}
   .hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:80px;align-items:center}
-  .hero h1{font-family:var(--font-display);font-weight:500;font-size:clamp(40px,5vw,62px);line-height:1.05;letter-spacing:-.015em;max-width:20ch}
+  .hero h1{font-family:var(--font-display);font-weight:500;font-size:clamp(34px,3.9vw,48px);line-height:1.08;letter-spacing:-.012em;max-width:20ch}
   .hero h1 .ac{color:var(--olive)}
   .hero .sub{margin-top:22px;font-family:var(--font-display);font-size:clamp(17px,1.9vw,21px);line-height:1.5;max-width:50ch;color:var(--ink-soft)}
   .hero .eyebrow{color:var(--olive);margin-bottom:20px}
   .hero .cta-row{margin-top:32px}
   .hero-graphic{width:100%;max-width:460px;margin-left:auto}
-  .dash{display:flex;flex-direction:column;gap:17px}
-  .drow{display:flex;flex-direction:column;gap:7px}
-  .drow .dtop{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink)}
-  .drow .dtop svg{width:16px;height:16px;stroke-width:1.7;color:var(--olive);flex:none}
-  .drow .dtop .st{margin-left:auto;font-size:11px;letter-spacing:.04em;color:var(--olive)}
-  .drow .dtop .st.pend{color:var(--ink-dim)}
-  .track{height:7px;background:var(--mist);border-radius:99px;overflow:hidden}
-  .track .fill{height:100%;background:var(--olive);border-radius:99px;transform-origin:left;transform:scaleX(0);animation:fillbar 1s cubic-bezier(.2,.8,.2,1) forwards}
-  .d2 .fill{animation-delay:.25s}.d3 .fill{animation-delay:.5s}
-  @keyframes fillbar{to{transform:scaleX(var(--w,1))}}
+  /* portal — summary strip */
+  .pstat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-bottom:16px;border-bottom:1px solid var(--rule)}
+  .pstat .n{font-family:var(--font-display);font-weight:500;font-size:23px;line-height:1;color:var(--ink)}
+  .pstat .s.flag .n{color:var(--oxblood)}
+  .pstat .l{font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim);margin-top:6px}
 
-  /* problem */
-  .problem{background:var(--olive);color:var(--paper);padding:80px 0}
-  .problem .grid{display:grid;grid-template-columns:1fr 1.3fr;gap:64px;align-items:center}
-  .problem .eyebrow{color:rgba(255,255,255,.72);margin-bottom:16px}
-  .problem .big{font-family:var(--font-display);font-weight:500;font-size:clamp(48px,6vw,76px);line-height:1;letter-spacing:-.02em}
-  .problem .cap{font-family:var(--font-display);font-size:22px;line-height:1.3;margin-top:10px;color:rgba(255,255,255,.9)}
-  .problem p{font-size:18px;line-height:1.7;color:rgba(255,255,255,.92);max-width:56ch}
+  /* portal — credentialing work queue */
+  .pq{width:100%;border-collapse:collapse;margin-top:4px}
+  .pq th{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-dim);font-weight:600;text-align:left;padding:12px 0 8px}
+  .pq th:last-child,.pq td:last-child{text-align:right}
+  .pq td{font-size:12.5px;padding:9px 0;border-top:1px solid var(--rule);color:var(--ink);white-space:nowrap}
+  .pq .pv{display:flex;align-items:center;gap:8px}
+  .pq .pv svg{width:14px;height:14px;stroke-width:1.7;color:var(--olive);flex:none}
+  .pq .py{color:var(--ink-soft)}
+  .pill{display:inline-block;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:600;padding:3px 9px;border-radius:99px;border:1px solid}
+  .pill.ok{color:var(--olive);border-color:rgba(61,77,42,.34);background:rgba(61,77,42,.08)}
+  .pill.wait{color:var(--ink-dim);border-color:var(--rule);background:var(--mist)}
+  .pill.flag{color:var(--oxblood);border-color:rgba(107,31,31,.3);background:rgba(107,31,31,.07)}
+
+  @keyframes rowin{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+  .pq tbody tr{animation:rowin .5s cubic-bezier(.2,.8,.2,1) backwards}
+  .pq tbody tr:nth-child(1){animation-delay:.10s}
+  .pq tbody tr:nth-child(2){animation-delay:.20s}
+  .pq tbody tr:nth-child(3){animation-delay:.30s}
+  .pq tbody tr:nth-child(4){animation-delay:.40s}
+  .pq tbody tr:nth-child(5){animation-delay:.50s}
+  @media (prefers-reduced-motion: reduce){
+    .pq tbody tr{animation:none}
+  }
 
   /* sections */
   .sec{padding:96px 0;border-bottom:1px solid var(--rule)}
+  .sec.alt{background:var(--mist)}
   .sec-head h2{font-family:var(--font-display);font-weight:500;font-size:clamp(38px,5vw,58px);line-height:1.02;letter-spacing:-.012em;max-width:20ch}
   .sec-head .intro{font-family:var(--font-display);font-size:clamp(18px,2vw,22px);line-height:1.45;max-width:56ch;margin-top:20px;color:var(--ink-soft)}
+
+  /* olive section band — cards inside stay on paper, so reset the inherited
+     white text and the on-dark icon tile back to their light-surface values */
+  .sec.olive{background:var(--olive);color:var(--paper);border-bottom:0}
+  .sec.olive .sec-head h2{color:var(--paper)}
+  .sec.olive .sec-head .intro{color:rgba(255,255,255,.88)}
+  .sec.olive .svc{color:var(--ink)}
+  .sec.olive .svc .itile{border-color:var(--olive);color:var(--olive)}
+  .sec.olive .svc:hover .itile{background:var(--olive);color:var(--paper)}
 
   .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .svc{background:var(--paper);border:1px solid rgba(26,26,23,.12);border-radius:4px;padding:32px 28px;display:flex;flex-direction:column;transition:border-color .18s,transform .18s}
   .svc:hover{border-color:var(--olive);transform:translateY(-2px)}
   .svc .num{font-family:var(--font-display);font-size:32px;color:var(--olive);margin-bottom:16px}
-  .svc h3{font-family:var(--font-display);font-weight:500;font-size:22px;line-height:1.3;margin-bottom:12px}
+  .svc h3{font-family:var(--font-display);font-weight:600;font-size:24px;line-height:1.25;letter-spacing:-.008em;margin-bottom:12px}
   .svc>p{font-size:14.5px;line-height:1.65;color:var(--ink-soft);margin-bottom:20px}
   .svc ul{margin:0 0 24px;display:flex;flex-direction:column;gap:10px}
   .svc li{font-size:14px;line-height:1.5;padding-left:18px;position:relative;color:var(--ink)}
@@ -127,11 +150,6 @@
   .portal .pcap svg{width:16px;height:16px;stroke-width:1.6;color:var(--olive);flex:none}
 
   /* image / visualization placeholders */
-  .mediaframe{border:1px solid var(--rule);background:var(--mist);overflow:hidden;position:relative}
-  .media-split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:52px}
-  .media-split .mediaframe{aspect-ratio:4/3}
-  .media-split .txt h3{font-family:var(--font-display);font-weight:500;font-size:26px;line-height:1.2;margin-bottom:14px}
-  .media-split .txt p{font-size:15px;line-height:1.65;color:var(--ink-soft);max-width:44ch}
 
   /* footer */
   footer{background:var(--olive);color:var(--paper);padding:56px 0 64px}
@@ -147,12 +165,25 @@
 
   @media(max-width:920px){
     .menu{display:none}
-    .hero-grid,.problem .grid{grid-template-columns:1fr;gap:48px}
-    .hero-graphic{max-width:320px;margin:0}
-    .cards3,.media-split{grid-template-columns:1fr}
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    /* the portal is a 3-column table now, so it needs the full width here */
+    .hero-graphic{max-width:100%;margin:0}
+    .cards3{grid-template-columns:1fr}
     .serve-grid{grid-template-columns:1fr}
     .portal{max-width:100%;margin:0}
     footer .cols{grid-template-columns:1fr 1fr;gap:32px}
+  }
+  /* Narrow phones: the work-queue rows are nowrap, so tighten them rather
+     than let the portal scroll sideways. */
+  @media(max-width:430px){
+    .portal .pbody{padding:18px 14px 14px}
+    .pstat .n{font-size:20px}
+    .pstat .l{font-size:8.5px;letter-spacing:.08em}
+    .pq th{font-size:8.5px;letter-spacing:.09em}
+    .pq td{font-size:11.5px;padding:8px 0}
+    .pq .pv{gap:6px}
+    .pq .pv svg{width:12px;height:12px}
+    .pill{font-size:8.5px;padding:2px 6px;letter-spacing:.04em}
   }
 </style>
 </head><body id="top">
@@ -190,7 +221,7 @@
   <div>
     <div class="eyebrow">Licensing · Credentialing · Payer Enrollment</div>
     <h1>Licensing &amp; credentialing experts to get your clinicians seeing patients <span class="ac">faster</span>.</h1>
-    <p class="sub">Gusty Group manages the full licensing, credentialing, and payer-enrollment lifecycle for your practice — so your providers start collecting revenue and getting in front of patients sooner.</p>
+    <p class="sub">Every week a provider spends un-billable is revenue you never recover. Gusty Group owns the paperwork, the payer follow-ups, and the deadlines end to end — turning a stalled, error-prone process into a predictable path to your first claim.</p>
     <div class="cta-row">
       <a href="contact.html" class="btn btn-olive">Speak to our team <span>&#8599;</span></a>
       <a href="#services" class="btn btn-ghost">See our solutions</a>
@@ -200,27 +231,49 @@
     <div class="portal">
       <div class="ptop"><span class="t"><i data-lucide="layout-dashboard"></i> Client portal</span><span class="live"><span class="d"></span> Live</span></div>
       <div class="pbody">
-        <div class="dash">
-          <div class="drow d1"><div class="dtop"><i data-lucide="scroll-text"></i> Licensing <span class="st">Active</span></div><div class="track"><div class="fill" style="--w:.96"></div></div></div>
-          <div class="drow d2"><div class="dtop"><i data-lucide="badge-check"></i> Credentialing <span class="st">In review</span></div><div class="track"><div class="fill" style="--w:.72"></div></div></div>
-          <div class="drow d3"><div class="dtop"><i data-lucide="file-check-2"></i> Enrollment <span class="st pend">Pending</span></div><div class="track"><div class="fill" style="--w:.45"></div></div></div>
+        <div class="pstat">
+          <div class="s"><div class="n">14</div><div class="l">Providers</div></div>
+          <div class="s"><div class="n">46</div><div class="l">Enrollments</div></div>
+          <div class="s flag"><div class="n">3</div><div class="l">Need action</div></div>
         </div>
-        <div class="pcap"><i data-lucide="trending-up"></i> Every provider, every stage, in one view</div>
+        <table class="pq">
+          <thead><tr><th>Provider</th><th>Payer</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="pv"><i data-lucide="stethoscope"></i> Dr. A. Reyes</span></td>
+              <td class="py">BCBS</td>
+              <td><span class="pill ok">Approved</span></td>
+            </tr>
+            <tr>
+              <td><span class="pv"><i data-lucide="heart-pulse"></i> Dr. M. Chen</span></td>
+              <td class="py">Aetna</td>
+              <td><span class="pill wait">In review</span></td>
+            </tr>
+            <tr>
+              <td><span class="pv"><i data-lucide="salad"></i> L. Okafor, RD</span></td>
+              <td class="py">Cigna</td>
+              <td><span class="pill flag">Signature</span></td>
+            </tr>
+            <tr>
+              <td><span class="pv"><i data-lucide="brain"></i> Dr. S. Patel</span></td>
+              <td class="py">Medicare</td>
+              <td><span class="pill ok">Approved</span></td>
+            </tr>
+            <tr>
+              <td><span class="pv"><i data-lucide="monitor-smartphone"></i> Dr. J. Alvarez</span></td>
+              <td class="py">UnitedHealth</td>
+              <td><span class="pill wait">Submitted</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pcap"><i data-lucide="trending-up"></i> Every provider, every payer, in one view</div>
       </div>
     </div>
   </div>
 </div></header>
 
-<section class="problem"><div class="wrap grid">
-  <div>
-    <div class="eyebrow">The problem</div>
-    <div class="big">Up to $100k</div>
-    <div class="cap">of revenue per provider at risk from credentialing delays.</div>
-  </div>
-  <div><p>Every week a provider spends un-billable is revenue you never recover. Gusty Group owns the paperwork, the payer follow-ups, and the deadlines end to end — turning a stalled, error-prone process into a predictable path to your first claim.</p></div>
-</div></section>
 
-<section class="sec" id="services"><div class="wrap">
+<section class="sec olive" id="services"><div class="wrap">
   <div class="sec-head" style="margin-bottom:48px">
     <h2>Services we offer.</h2>
     <p class="intro">One team across the full lifecycle — license to enrollment to first claim.</p>
@@ -263,35 +316,21 @@
       <a class="more" href="services-payer-enrollment.html">Learn more &#8594;</a>
     </div>
   </div>
-  <div style="margin-top:40px"><a href="contact.html" class="btn btn-ink">Speak to our team <span>&#8599;</span></a></div>
+  <div style="margin-top:40px"><a href="contact.html" class="btn btn-ondark">Speak to our team <span>&#8599;</span></a></div>
 </div></section>
 
-<section class="sec managed"><div class="wrap">
+<section class="sec"><div class="wrap">
   <h2 style="font-family:var(--font-display);font-weight:500;font-size:clamp(34px,4.4vw,52px);line-height:1.05;letter-spacing:-.012em;margin-bottom:48px;max-width:22ch">A fully managed service with real-time visibility for your team.</h2>
   <div class="cards3">
     <div class="feat"><div class="itile"><i data-lucide="users-round"></i></div><h3>Dedicated credentialing team</h3><p>Senior specialists who own your roster end to end — no ticket queues, no handoffs, one point of contact.</p></div>
     <div class="feat"><div class="itile"><i data-lucide="layout-dashboard"></i></div><h3>Client portal &amp; reporting</h3><p>Live status for every provider and payer, revenue-at-risk views, and reporting your leadership can act on.</p></div>
     <div class="feat"><div class="itile"><i data-lucide="bell-ring"></i></div><h3>Alerts &amp; automations</h3><p>Deadline alerts, re-cred automation, and payer follow-ups that accelerate approvals and stop lapses.</p></div>
   </div>
-  <div class="media-split">
-    <div class="mediaframe"><div class="gfx gfx-panel gfx-grid">
-      <div class="gfx-ico"><i data-lucide="layout-dashboard"></i></div>
-      <div class="gfx-cap">Client portal</div>
-      <div class="gfx-rows">
-        <div class="gfx-row"><div class="gfx-lbl">Roster synced<b>LIVE</b></div><div class="gfx-track"><i style="--w:1"></i></div></div>
-        <div class="gfx-row"><div class="gfx-lbl">Licenses tracked<b>LIVE</b></div><div class="gfx-track"><i style="--w:.84"></i></div></div>
-        <div class="gfx-row"><div class="gfx-lbl">Payer enrollments<b>IN FLIGHT</b></div><div class="gfx-track"><i style="--w:.47"></i></div></div>
-      </div>
-    </div></div>
-    <div class="txt">
-      <h3>See every provider's status at a glance.</h3>
-      <p>One live view of your whole roster — license, credentialing, and enrollment stage per provider, sorted by revenue-at-risk, with the next action and its owner always visible.</p>
-      <div style="margin-top:22px"><a href="contact.html" class="btn btn-ghost">See the portal <span>&#8599;</span></a></div>
-    </div>
-  </div>
+
+  <div class="cta-row" style="margin-top:46px"><a href="contact.html" class="btn btn-olive">Speak to our team <span>&#8599;</span></a></div>
 </div></section>
 
-<section class="sec" id="who-we-serve"><div class="wrap">
+<section class="sec alt" id="who-we-serve"><div class="wrap">
   <h2 style="font-family:var(--font-display);font-weight:500;font-size:clamp(38px,5vw,58px);line-height:1.02;letter-spacing:-.012em;margin-bottom:40px">Who we serve.</h2>
   <div class="serve-grid">
     <div class="cell"><i data-lucide="salad"></i>Registered Dietitians</div>

@@ -337,3 +337,100 @@
 	.gfx-rows { max-width: none; }
 	.gfx-axis { display: none; }
 }
+
+/* ───────────────── compact map ─────────────────
+   Stylised tile-grid map of IMLC status by state. A tile grid rather than
+   true geography: it keeps every state legible at hero size and needs no
+   external map data, matching the ruled, geometric feel of the system. */
+
+.compact-map {
+	position: relative;
+}
+
+.cm-grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-auto-rows: 1fr;
+	gap: 3px;
+}
+
+/* Keep the tiles square whatever the container width. */
+.cm-grid::before {
+	content: "";
+	grid-column: 1;
+	grid-row: 1;
+	aspect-ratio: 1;
+}
+
+.cm-s {
+	grid-column: var(--c);
+	grid-row: var(--r);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 1;
+	font-family: var(--font-body);
+	font-size: clamp(8px, .82vw, 11px);
+	font-weight: 600;
+	letter-spacing: .02em;
+	border-radius: 2px;
+	color: var(--paper);
+	background: var(--olive);
+	cursor: default;
+	position: relative;
+	transition:
+		transform .16s cubic-bezier(.2, .8, .2, 1),
+		box-shadow .16s ease;
+}
+
+/* Pop the individual state out on hover. */
+.cm-s:hover {
+	transform: scale(1.22);
+	box-shadow: 0 6px 16px rgba(26, 26, 23, .28);
+	z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.cm-s { transition: none; }
+	.cm-s:hover { transform: none; }
+}
+
+
+.cm-legend {
+	display: flex;
+	gap: 9px 18px;
+	margin-top: 22px;
+}
+
+.cm-l {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	font-size: 12.5px;
+	font-weight: 500;
+	line-height: 1.35;
+	color: var(--ink-soft);
+}
+
+.cm-l i {
+	width: 11px;
+	height: 11px;
+	border-radius: 2px;
+	flex: none;
+	background: var(--olive);
+}
+
+
+/* Hero split — text left, map right. Used on the pages that lead with it. */
+.phero.split .wrap {
+	display: grid;
+	grid-template-columns: 1.05fr .95fr;
+	gap: 56px;
+	align-items: center;
+}
+
+@media (max-width: 920px) {
+	.phero.split .wrap { grid-template-columns: 1fr; gap: 40px; }
+	.cm-s { font-size: 10px; }
+}
+
