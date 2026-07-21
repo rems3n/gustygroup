@@ -11,8 +11,8 @@ a{color:var(--oxblood);text-decoration:none;transition:background .15s,color .15
 /* nav */
 nav.top{position:sticky;top:0;z-index:100;background:var(--olive);border-bottom:1px solid var(--olive-deep)}
 nav.top .inner{height:66px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{display:flex;flex-direction:column;line-height:.92;color:var(--paper);font-family:var(--font-display);font-weight:400}
-.logo .l1{font-size:20px;letter-spacing:.14em}.logo .l2{font-size:12px;letter-spacing:.24em}
+.logo{display:inline-flex;align-items:center;color:var(--paper)}
+.logo svg{display:block;height:42px;width:auto}
 .menu{display:flex;gap:2px;align-items:center}
 .menu>li{position:relative}
 .menu>li>a{display:flex;align-items:center;gap:5px;color:var(--paper);font-size:14px;padding:10px 12px}
@@ -156,7 +156,7 @@ nav.top .inner{height:66px;display:flex;align-items:center;justify-content:space
 footer{background:var(--olive);color:var(--paper);padding:56px 0 64px}
 footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
 footer .fbrand{font-family:var(--font-display);line-height:.92}
-footer .fbrand .l1{font-size:22px;letter-spacing:.14em}footer .fbrand .l2{font-size:13px;letter-spacing:.24em}
+footer .fbrand svg{display:block;height:46px;width:auto;color:var(--paper)}
 footer .fbrand p{font-size:14px;line-height:1.6;color:rgba(255,255,255,.8);margin-top:18px;max-width:34ch;font-family:var(--font-body)}
 footer .ftitle{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:14px}
 footer .flist{display:flex;flex-direction:column;gap:10px}
