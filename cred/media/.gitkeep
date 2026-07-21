@@ -1,0 +1,2 @@
+Keeps this directory in git so Pages CMS has somewhere to upload media.
+Configured in /.pages.yml as: media.input = cred/media
