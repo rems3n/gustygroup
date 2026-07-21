@@ -1,16 +1,19 @@
 ---
 title: The real cost of a credentialing delay — and how to model it
 category: Credentialing
-author: chris-gusty
+author: gusty-group.md
 date: 2026-07-14
 readTime: 8
-excerpt: Every week a provider sits un-credentialed is revenue you never bill back. Here's how to put a number on it, prioritize your roster by revenue-at-risk, and shorten the path to a clean file.
+excerpt: Every week a provider sits un-credentialed is revenue you never bill
+  back. Here's how to put a number on it, prioritize your roster by
+  revenue-at-risk, and shorten the path to a clean file.
 featured: true
 leadMagnet: revenue-at-risk-playbook
-takeaway: Model exposure per provider, sort the roster by dollars-at-risk, and attack the top of the list first. Prioritization alone often recovers weeks of billable time with no extra headcount.
+takeaway: Model exposure per provider, sort the roster by dollars-at-risk, and
+  attack the top of the list first. Prioritization alone often recovers weeks of
+  billable time with no extra headcount.
 draft: false
 ---
-
 When a practice hires a new clinician, the celebration is real — and the clock is already running. From the day that offer is signed to the day the provider can bill an in-network visit, there is a window where the provider is on payroll but not producing revenue. Most practices underestimate how wide that window is, and almost none put a dollar figure on it.
 
 That figure matters. Industry estimates put the revenue at risk from credentialing and enrollment delays at up to $100,000 per provider. The good news: once you can model the cost, you can manage it — and prioritize the work that recovers the most revenue first.
