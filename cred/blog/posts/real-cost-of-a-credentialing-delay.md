@@ -1,5 +1,5 @@
 ---
-title: The real cost of a credentialing delay — and how to model it
+title: The Real Cost of a Credentialing Delay
 category: Credentialing
 author: gusty-group.md
 date: 2026-07-14
