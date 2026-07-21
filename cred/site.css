@@ -52,6 +52,11 @@ nav.top .inner{height:66px;display:flex;align-items:center;justify-content:space
 .phero .sub{margin-top:22px;font-family:var(--font-display);font-size:clamp(17px,1.9vw,21px);line-height:1.5;max-width:56ch;color:var(--ink-soft)}
 .phero .cta-row{margin-top:32px}
 
+/* standalone body copy under a section head — spaced, readable measure */
+.copy{max-width:70ch;margin-top:30px}
+.copy p{font-size:17px;line-height:1.75;color:var(--ink-soft)}
+.copy p+p{margin-top:24px}
+
 /* generic section */
 .sec{padding:88px 0;border-bottom:1px solid var(--rule)}
 .sec.alt{background:var(--mist)}
