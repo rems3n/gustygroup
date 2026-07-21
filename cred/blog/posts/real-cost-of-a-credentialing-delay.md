@@ -7,6 +7,7 @@ readTime: 8
 excerpt: Every week a provider sits un-credentialed is revenue you never bill
   back. Here's how to put a number on it, prioritize your roster by
   revenue-at-risk, and shorten the path to a clean file.
+cover: /cred/media/healthcare_costs_blog.webp
 featured: true
 leadMagnet: revenue-at-risk-playbook
 takeaway: Model exposure per provider, sort the roster by dollars-at-risk, and
