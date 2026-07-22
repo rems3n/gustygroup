@@ -78,15 +78,16 @@
   .pill.wait{color:var(--ink-dim);border-color:var(--rule);background:var(--mist)}
   .pill.flag{color:var(--oxblood);border-color:rgba(107,31,31,.3);background:rgba(107,31,31,.07)}
 
-  @keyframes rowin{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
-  .pq tbody tr{animation:rowin .5s cubic-bezier(.2,.8,.2,1) backwards}
-  .pq tbody tr:nth-child(1){animation-delay:.10s}
-  .pq tbody tr:nth-child(2){animation-delay:.20s}
-  .pq tbody tr:nth-child(3){animation-delay:.30s}
-  .pq tbody tr:nth-child(4){animation-delay:.40s}
-  .pq tbody tr:nth-child(5){animation-delay:.50s}
+  /* Portal loop. Default state is fully visible — the .cp-anim class (added by
+     JS only when motion is allowed) is what enables the hidden-then-reveal
+     cycle, so if the script never runs the dashboard still shows completely. */
+  .cp-anim .pstat .s,
+  .cp-anim .pq tbody tr{opacity:0;transform:translateY(7px);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.8,.2,1)}
+  .cp-anim .pstat .s.cp-in,
+  .cp-anim .pq tbody tr.cp-in{opacity:1;transform:none}
   @media (prefers-reduced-motion: reduce){
-    .pq tbody tr{animation:none}
+    .cp-anim .pstat .s,
+    .cp-anim .pq tbody tr{opacity:1;transform:none;transition:none}
   }
 
   /* sections */
@@ -379,4 +380,52 @@
 </div></footer>
 <script src="https://unpkg.com/lucide@0.474.0/dist/umd/lucide.min.js"></script>
 <script>window.lucide&&lucide.createIcons()</script>
+<script>
+/* Client-portal loop: reveal the three stats, then each provider row, one at a
+   time and slowing down; hold a few seconds; then reset and repeat. Purely
+   additive — the dashboard renders fully without this, so a JS failure or
+   reduced-motion preference just leaves everything visible. */
+(function () {
+	var portal = document.querySelector('.portal');
+	if (!portal) return;
+	if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+	var items = [].slice.call(portal.querySelectorAll('.pstat .s'))
+		.concat([].slice.call(portal.querySelectorAll('.pq tbody tr')));
+	if (!items.length) return;
+
+	// Each item comes in a little slower than the last, per the request.
+	var GAPS = [0, 650, 800, 950, 1050, 1150, 1250, 1350]; // ms before item i
+	var HOLD = 3200;   // pause once the full board is shown
+	var timers = [];
+
+	function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+
+	function cycle() {
+		clearTimers();
+		items.forEach(function (el) { el.classList.remove('cp-in'); });
+		var t = 400; // brief beat after the reset before the first stat
+		items.forEach(function (el, i) {
+			t += (GAPS[i] != null ? GAPS[i] : 1350);
+			timers.push(setTimeout(function () { el.classList.add('cp-in'); }, t));
+		});
+		timers.push(setTimeout(cycle, t + HOLD));
+	}
+
+	portal.classList.add('cp-anim');
+	cycle(); // start immediately — never gated on an observer that may not fire
+
+	// Optional: while scrolled away, freeze the board fully-shown so it is never
+	// caught mid-cycle (half-empty) when the user scrolls back. Pure enhancement;
+	// if IntersectionObserver is unavailable or silent, the loop just runs on.
+	if ('IntersectionObserver' in window) {
+		new IntersectionObserver(function (es) {
+			es.forEach(function (e) {
+				if (e.isIntersecting) cycle();
+				else { clearTimers(); items.forEach(function (el) { el.classList.add('cp-in'); }); }
+			});
+		}, { threshold: 0.2 }).observe(portal);
+	}
+})();
+</script>
 </body></html>
