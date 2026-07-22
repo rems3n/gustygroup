@@ -70,8 +70,22 @@ function readCollection(dir) {
    When a post or resource has no uploaded cover, fall back to the same
    .gfx-cover treatment used across the static pages. */
 
+/* Resolve a CMS-stored asset path to one correct for the current page depth.
+   Pages CMS stores media as site-absolute "/cred/media/…" (from media.output),
+   but pages live at two depths (/cred/blog.html and /cred/blog/<slug>.html), so
+   a raw prefix concat produced "..//cred/media/…" on article pages. Rewrite the
+   /cred/ root to the depth prefix, matching how renderBody() handles body images.
+   Leaves external URLs and other absolute paths untouched. */
+const asset = (p, prefix) => {
+	if (!p) return p;
+	if (/^https?:\/\//.test(p)) return p;
+	if (p.startsWith('/cred/')) return prefix + p.slice('/cred/'.length);
+	if (p.startsWith('/')) return p;
+	return prefix + p;
+};
+
 const coverFor = (item, { alt = false, variant = '', prefix = '' } = {}) => {
-	if (item.cover) return `<img src="${esc(prefix + item.cover)}" alt="${esc(item.title)}" style="width:100%;height:100%;object-fit:cover">`;
+	if (item.cover) return `<img src="${esc(asset(item.cover, prefix))}" alt="${esc(item.title)}" style="width:100%;height:100%;object-fit:cover">`;
 	const icon = CATEGORY_ICON[cats(item)[0]] || 'file-text';
 	const cls = variant || (alt ? ' alt' : '');
 	return `<div class="gfx gfx-cover${cls}">
@@ -84,7 +98,7 @@ const coverFor = (item, { alt = false, variant = '', prefix = '' } = {}) => {
 };
 
 const avatarFor = (author, prefix = '') => author?.photo
-	? `<img src="${esc(prefix + author.photo)}" alt="${esc(author.name)}" style="width:100%;height:100%;object-fit:cover">`
+	? `<img src="${esc(asset(author.photo, prefix))}" alt="${esc(author.name)}" style="width:100%;height:100%;object-fit:cover">`
 	: `<div class="gfx-avatar">${esc(initials(author?.name || 'Gusty Group'))}</div>`;
 
 /* ── markdown ───────────────────────────────────────────────────────── */
