@@ -124,3 +124,26 @@
 		init();
 	}
 })();
+
+/* Mobile nav toggle. Separate IIFE so it runs on every page regardless of the
+   reveal logic above (which bails when IntersectionObserver is absent). */
+(function () {
+	function wire() {
+		var nav = document.querySelector('nav.top');
+		var btn = nav && nav.querySelector('.nav-toggle');
+		if (!btn) return;
+		btn.addEventListener('click', function () {
+			var open = nav.classList.toggle('open');
+			btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+		});
+		// tapping any menu link closes the panel
+		nav.querySelectorAll('.menu a').forEach(function (a) {
+			a.addEventListener('click', function () {
+				nav.classList.remove('open');
+				btn.setAttribute('aria-expanded', 'false');
+			});
+		});
+	}
+	if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
+	else wire();
+})();
