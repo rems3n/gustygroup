@@ -107,7 +107,9 @@
 			chips.forEach(function (c) { c.classList.toggle('on', c === chip); });
 			var shown = 0;
 			posts.forEach(function (p) {
-				var hit = !want || p.dataset.cat === want;
+				// data-cat is a pipe-delimited list, so a post shows under any of its categories
+				var has = (p.dataset.cat || '').split('|');
+				var hit = !want || has.indexOf(want) !== -1;
 				p.hidden = !hit;
 				if (hit) shown++;
 			});

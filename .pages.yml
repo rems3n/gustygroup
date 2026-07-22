@@ -30,10 +30,12 @@ content:
         type: string
         required: true
       - name: category
-        label: Category
+        label: Categories
         type: select
         required: true
         options:
+          multiple: true
+          min: 1
           values:
             - License management
             - Credentialing

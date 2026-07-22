@@ -47,6 +47,11 @@ const fmtDate = (d) => new Date(`${isoDate(d)}T12:00:00Z`).toLocaleDateString('e
    full path depending on the token used — normalise to the bare slug. */
 const refSlug = (v) => (v == null ? '' : String(v).split('/').pop().replace(/\.md$/i, ''));
 
+/* category may be a single string (old posts) or a YAML array (multi-select).
+   Normalise to a clean array so everything downstream handles both. */
+const cats = (item) => (Array.isArray(item.category) ? item.category : item.category ? [item.category] : []).filter(Boolean);
+const catLabel = (item) => cats(item).join(' · ');   // visible tag: "Credentialing · Revenue"
+
 const initials = (name = '') => name.trim().split(/\s+/).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
 
 /** Read every .md in a directory into {slug, ...frontmatter, body}. */
@@ -67,10 +72,10 @@ function readCollection(dir) {
 
 const coverFor = (item, { alt = false, variant = '', prefix = '' } = {}) => {
 	if (item.cover) return `<img src="${esc(prefix + item.cover)}" alt="${esc(item.title)}" style="width:100%;height:100%;object-fit:cover">`;
-	const icon = CATEGORY_ICON[item.category] || 'file-text';
+	const icon = CATEGORY_ICON[cats(item)[0]] || 'file-text';
 	const cls = variant || (alt ? ' alt' : '');
 	return `<div class="gfx gfx-cover${cls}">
-        <div class="gfx-kicker">${esc(item.kicker || item.category || 'Resource')}</div>
+        <div class="gfx-kicker">${esc(item.kicker || catLabel(item) || 'Resource')}</div>
         <div>
           <div class="gfx-ico"><i data-lucide="${esc(item.icon || icon)}"></i></div>
           <div class="gfx-t">${esc(item.title)}</div>
@@ -132,8 +137,8 @@ for (const post of posts) {
 
 	const others = posts.filter((p) => p.slug !== post.slug);
 	const related = others
-		.filter((p) => p.category === post.category)
-		.concat(others.filter((p) => p.category !== post.category))
+		.filter((p) => cats(p).some((c) => cats(post).includes(c)))
+		.concat(others.filter((p) => !cats(p).some((c) => cats(post).includes(c))))
 		.slice(0, 3);
 
 	const lead = resourceBySlug[refSlug(post.leadMagnet)];
@@ -146,7 +151,7 @@ for (const post of posts) {
 		TITLE_ENC: encodeURIComponent(post.title),
 		URL_ENC: encodeURIComponent(url),
 		EXCERPT: esc(post.excerpt),
-		CATEGORY: esc(post.category),
+		CATEGORY: esc(catLabel(post)),
 		DATE: fmtDate(post.date),
 		DATE_ISO: isoDate(post.date),
 		READ_TIME: esc(post.readTime || 5),
@@ -172,7 +177,7 @@ for (const post of posts) {
 		RELATED: related.length ? `<section class="sec alt"><div class="wrap">
   <div class="sec-head" style="margin-bottom:8px"><h2 style="font-size:clamp(26px,3vw,34px)">Keep reading.</h2></div>
   <div class="cards3">
-${related.map((p) => `    <div class="rel"><h3>${esc(p.category)}</h3><p>${esc(p.excerpt)}</p><a class="more" href="${p.slug}.html">Read article &#8594;</a></div>`).join('\n')}
+${related.map((p) => `    <div class="rel"><h3>${esc(catLabel(p))}</h3><p>${esc(p.excerpt)}</p><a class="more" href="${p.slug}.html">Read article &#8594;</a></div>`).join('\n')}
   </div>
 </div></section>` : '',
 	}));
@@ -184,9 +189,9 @@ const [featured, ...rest] = posts.some((p) => p.featured)
 	? [posts.find((p) => p.featured), ...posts.filter((p) => !p.featured)]
 	: posts;
 
-const postCard = (p) => `    <article class="post" data-cat="${esc(p.category)}">
+const postCard = (p) => `    <article class="post" data-cat="${esc(cats(p).join('|'))}">
       <div class="mediaframe">${coverFor(p)}</div>
-      <span class="tag">${esc(p.category)}</span>
+      <span class="tag">${esc(catLabel(p))}</span>
       <h3><a href="blog/${p.slug}.html">${esc(p.title)}</a></h3>
       <p>${esc(p.excerpt)}</p>
       <div class="pmeta"><span>${esc(authors[refSlug(p.author)]?.name || 'Gusty Group')}</span><span class="dot"></span><span>${fmtDate(p.date)}</span><span class="dot"></span><span>${esc(p.readTime || 5)} min</span></div>
@@ -201,7 +206,7 @@ writeFileSync(join(CRED, 'blog.html'), fill(tpl.list, {
   <article class="featured">
     <div class="mediaframe">${coverFor(featured)}</div>
     <div class="txt">
-      <span class="tag">${esc(featured.category)}</span>
+      <span class="tag">${esc(catLabel(featured))}</span>
       <h2><a href="blog/${featured.slug}.html">${esc(featured.title)}</a></h2>
       <p>${esc(featured.excerpt)}</p>
       <div class="pmeta"><span>${esc(authors[refSlug(featured.author)]?.name || 'Gusty Group')}</span><span class="dot"></span><span>${fmtDate(featured.date)}</span><span class="dot"></span><span>${esc(featured.readTime || 5)} min read</span></div>
