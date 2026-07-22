@@ -180,9 +180,10 @@ footer .fine{margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,
 
 /* featured post */
 .featured{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;padding:44px 0 8px}
-.featured .mediaframe{aspect-ratio:16/11;height:100%}
+.featured .mediaframe img{width:100%;height:100%;object-fit:cover;display:block}
+.featured .mediaframe{aspect-ratio:16/11}
 .featured .tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--olive)}
-.featured h2{font-family:var(--font-display);font-weight:500;font-size:clamp(28px,3.4vw,40px);line-height:1.08;letter-spacing:-.012em;margin:14px 0 16px}
+.featured h2{font-family:var(--font-display);font-weight:600;font-size:clamp(28px,3.4vw,40px);line-height:1.08;letter-spacing:-.012em;margin:14px 0 16px}
 .featured h2 a{color:var(--ink)}
 .featured h2 a:hover{background:none;color:var(--oxblood)}
 .featured p{font-size:16px;line-height:1.6;color:var(--ink-soft);max-width:48ch}
@@ -194,7 +195,7 @@ footer .fine{margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,
 .post{display:flex;flex-direction:column}
 .post .mediaframe{aspect-ratio:16/10;margin-bottom:18px}
 .post .tag{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--olive)}
-.post h3{font-family:var(--font-display);font-weight:500;font-size:21px;line-height:1.22;letter-spacing:-.008em;margin:10px 0 10px}
+.post h3{font-family:var(--font-display);font-weight:600;font-size:21px;line-height:1.22;letter-spacing:-.008em;margin:10px 0 10px}
 .post h3 a{color:var(--ink)}
 .post h3 a:hover{background:none;color:var(--oxblood)}
 .post p{font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin-bottom:14px}
