@@ -61,66 +61,56 @@
 
 	function observe() {
 		var pending = Array.prototype.slice.call(document.querySelectorAll('.reveal, .gfx-anim'));
-		var queued = false;
 
 		function show(el) {
 			el.classList.add('in');
-			io.unobserve(el);
 			var i = pending.indexOf(el);
 			if (i > -1) pending.splice(i, 1);
 		}
 
-		var io = new IntersectionObserver(function (entries) {
-			entries.forEach(function (e) { if (e.isIntersecting) show(e.target); });
-		}, { threshold: 0, rootMargin: '0px 0px -60px 0px' });
-
-		pending.slice().forEach(function (el) { io.observe(el); });
-
-		/* Catch-up sweep. IntersectionObserver only reports a *change* in
-		   intersection, so a fast scroll or an in-page anchor jump can carry an
-		   element from below the fold to above it without ever being seen as
-		   intersecting — stranding it at opacity 0. This reveals anything the
-		   observer may have skipped, and detaches once everything is shown. */
-		function sweep(onlyPassed) {
-			queued = false;
-			var limit = onlyPassed ? 0 : window.innerHeight - 60;
+		/* CRITICAL: reveal everything already in (or above) the viewport RIGHT NOW,
+		   synchronously, before any observer. This is the guarantee that above-the-
+		   fold content is never left hidden — it does not depend on IntersectionObserver
+		   firing, on timers, or on rAF, any of which can be stubbed, throttled, or slow.
+		   Only genuinely below-the-fold elements are left to animate in on scroll. */
+		function revealInView(margin) {
 			pending.slice().forEach(function (el) {
-				if (el.getBoundingClientRect().top < limit) show(el);
+				if (el.getBoundingClientRect().top < window.innerHeight - (margin || 0)) show(el);
 			});
+		}
+		revealInView(0);
+
+		// Below-fold elements animate in as they scroll up.
+		var ioFired = false;
+		if ('IntersectionObserver' in window) {
+			var io = new IntersectionObserver(function (entries) {
+				ioFired = true;
+				entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+			}, { threshold: 0, rootMargin: '0px 0px -60px 0px' });
+			pending.slice().forEach(function (el) { io.observe(el); });
+		}
+
+		function onScroll() {
+			revealInView(60);
 			if (!pending.length) {
 				window.removeEventListener('scroll', onScroll);
 				window.removeEventListener('resize', onScroll);
 			}
 		}
-
-		function onScroll() {
-			if (queued) return;
-			queued = true;
-			requestAnimationFrame(function () { sweep(false); });
-		}
-
 		window.addEventListener('scroll', onScroll, { passive: true });
 		window.addEventListener('resize', onScroll, { passive: true });
 
-		// If the browser restored a mid-page scroll position, reveal what is
-		// already above the viewport without animating it.
-		requestAnimationFrame(function () { sweep(true); });
-
-		/* Failsafe. If the observer never reported anything even though content
-		   is sitting on screen, it is not working (some embedded webviews and
-		   automation contexts stub it out). Drop motion entirely rather than
-		   risk leaving copy invisible — no animation is a far better failure
-		   than an unreadable page. */
+		/* Failsafe. If the observer never fired at all shortly after load, it is
+		   stubbed or broken (some webviews and automation contexts do this). Reveal
+		   everything and drop motion — an unanimated page always beats one with
+		   invisible sections that scroll can never bring back. */
 		setTimeout(function () {
-			var onscreen = pending.filter(function (el) {
-				return el.getBoundingClientRect().top < window.innerHeight;
-			});
-			if (!onscreen.length) return;
-			root.classList.remove('has-motion');
-			pending.length = 0;
-			window.removeEventListener('scroll', onScroll);
-			window.removeEventListener('resize', onScroll);
-		}, 2500);
+			var stuckOnScreen = pending.some(function (el) { return el.getBoundingClientRect().top < window.innerHeight; });
+			if (!ioFired || stuckOnScreen) {
+				pending.slice().forEach(show);
+				root.classList.remove('has-motion');
+			}
+		}, 1200);
 	}
 
 	function init() {
