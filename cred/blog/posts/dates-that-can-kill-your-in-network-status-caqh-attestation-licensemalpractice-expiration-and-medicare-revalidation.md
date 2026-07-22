@@ -6,7 +6,7 @@ category:
   - Operations
 author: gusty-group.md
 date: 2026-07-21
-readTime: 57
+readTime: 7
 excerpt: >-
   CAQH re-attestation, license/malpractice expirations, and Medicare
   revalidation can quietly terminate your in-network status. Here's the calendar
