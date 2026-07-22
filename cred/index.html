@@ -94,8 +94,11 @@
   .marquee{padding:38px 0 42px;border-bottom:1px solid var(--rule);overflow:hidden}
   .marquee-lead{text-align:center;font-family:var(--font-display);font-size:clamp(15px,1.7vw,19px);line-height:1.4;color:var(--ink-soft);margin-bottom:28px}
   .marquee-viewport{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  /* draggable once JS takes over; touch-action lets vertical page scroll through */
+  .marquee-viewport.drag{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+  .marquee-viewport.grabbing{cursor:grabbing}
   .marquee-row{display:flex;width:max-content;animation:marquee 46s linear infinite}
-  .marquee-viewport:hover .marquee-row{animation-play-state:paused}
+  .marquee-viewport:not(.drag):hover .marquee-row{animation-play-state:paused}
   /* trailing margin (not gap) so translateX(-50%) lands exactly one set over → seamless */
   .chip{flex:none;display:inline-flex;align-items:center;justify-content:center;height:52px;margin-right:16px;padding:0 26px;border:1px solid var(--rule);border-radius:999px;background:var(--paper)}
   .chip-name{font-family:var(--font-display);font-weight:500;font-size:17px;letter-spacing:.005em;color:var(--ink);white-space:nowrap}
@@ -476,6 +479,81 @@
 			});
 		}, { threshold: 0.2 }).observe(portal);
 	}
+})();
+</script>
+<script>
+/* Draggable payer marquee. Takes over the CSS scroll with a rAF loop so it can
+   be grabbed and flung. Progressive enhancement: the CSS animation keeps
+   running until the first frame fires, so if JS or rAF never runs the carousel
+   still scrolls on its own. */
+(function () {
+	var vp = document.querySelector('.marquee-viewport');
+	var row = vp && vp.querySelector('.marquee-row');
+	if (!row) return;
+	if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+	var half = row.scrollWidth / 2;          // one set width; wrap keeps it seamless
+	if (!half) return;
+	var AUTO = half / 46000;                  // px/ms leftward drift, matches the 46s CSS loop
+	var MAXV = 2.6;                            // cap a hard flick (px/ms)
+
+	var pos = 0, vel = -AUTO, started = false;
+	var dragging = false, lastX = 0, lastT = 0, moved = 0;
+	var prev = null;
+
+	function wrap(p) { p %= half; if (p > 0) p -= half; return p; }
+	function matrixX() { try { return new DOMMatrixReadOnly(getComputedStyle(row).transform).m41 || 0; } catch (e) { return 0; } }
+
+	function frame(t) {
+		if (!started) {                       // first real frame: adopt CSS position, then take over
+			started = true;
+			pos = wrap(matrixX());
+			row.style.animation = 'none';
+			vp.classList.add('drag');
+		}
+		if (prev == null) prev = t;
+		var dt = Math.min(t - prev, 40); prev = t;
+		if (!dragging) {
+			pos = wrap(pos + vel * dt);
+			// ease velocity back to the gentle auto-drift (fling decays over ~400ms)
+			vel += (-AUTO - vel) * (1 - Math.exp(-dt / 400));
+			row.style.transform = 'translateX(' + pos + 'px)';
+		}
+		requestAnimationFrame(frame);
+	}
+	requestAnimationFrame(frame);
+
+	function down(e) {
+		dragging = true; moved = 0;
+		vp.classList.add('grabbing');
+		lastX = e.clientX; lastT = e.timeStamp || performance.now();
+		vel = 0;
+		if (vp.setPointerCapture && e.pointerId != null) { try { vp.setPointerCapture(e.pointerId); } catch (_) {} }
+	}
+	function move(e) {
+		if (!dragging) return;
+		var now = e.timeStamp || performance.now();
+		var dx = e.clientX - lastX, dtm = now - lastT || 16;
+		moved += Math.abs(dx);
+		vel = Math.max(-MAXV, Math.min(MAXV, dx / dtm)); // release velocity = last drag speed
+		pos = wrap(pos + dx);
+		row.style.transform = 'translateX(' + pos + 'px)';
+		lastX = e.clientX; lastT = now;
+		if (moved > 6 && e.cancelable) e.preventDefault();
+	}
+	function up() {
+		if (!dragging) return;
+		dragging = false;
+		vp.classList.remove('grabbing');
+		// keep vel as the fling; frame() eases it back to AUTO
+	}
+
+	vp.addEventListener('pointerdown', down);
+	window.addEventListener('pointermove', move, { passive: false });
+	window.addEventListener('pointerup', up);
+	window.addEventListener('pointercancel', up);
+	// don't let a drag that ends on a chip fire a stray click/navigation
+	vp.addEventListener('click', function (e) { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
 })();
 </script>
 </body></html>
