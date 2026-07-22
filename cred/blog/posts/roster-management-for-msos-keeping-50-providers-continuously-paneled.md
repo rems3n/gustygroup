@@ -16,7 +16,7 @@ excerpt: >-
   attestation 120 days, provider directory No Surprises Act, credentialing
   expiration tracking
 cover: /cred/media/provider-group-1.jpg
-featured: false
+featured: true
 draft: false
 ---
 Quick answer: Past roughly 50 providers, the risk shifts from getting paneled to staying paneled. Expirations, re-credentialing cycles, CAQH attestations, roster syncs, and directory verification all run continuously and on different clocks. The fix is a lifecycle system with proactive alerts and specialist oversight.
