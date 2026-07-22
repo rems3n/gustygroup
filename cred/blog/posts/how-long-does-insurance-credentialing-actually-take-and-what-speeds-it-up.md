@@ -1,6 +1,7 @@
 ---
 title: How Long Does Insurance Credentialing Actually Take? (And What Speeds It Up)
-category: Credentialing
+category:
+  - Credentialing
 author: gusty-group.md
 date: 2026-07-21
 readTime: 5

@@ -1,7 +1,8 @@
 ---
 title: '"When Can I Actually Start Billing?" Effective Dates and Retroactive
   Billing, Explained'
-category: Credentialing
+category:
+  - Credentialing
 author: gusty-group.md
 date: 2026-07-21
 readTime: 5

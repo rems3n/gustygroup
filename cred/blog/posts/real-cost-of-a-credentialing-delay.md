@@ -1,6 +1,7 @@
 ---
 title: The Real Cost of a Credentialing Delay
-category: Credentialing
+category:
+  - Credentialing
 author: gusty-group.md
 date: 2026-07-14
 readTime: 8
